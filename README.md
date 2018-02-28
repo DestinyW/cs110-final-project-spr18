@@ -11,8 +11,8 @@ Example:
 
 [link to demo presentation slides](#)
 
-### Team:
-#### Team Names
+### Team: Indigo
+#### Team Names Natalie Anselmi, Maggie Chen, and Destiny Walcott
 
 ***
 
