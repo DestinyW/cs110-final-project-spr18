@@ -46,11 +46,11 @@ Possibilities of increasing difficulty: Moving obstacles that approach the dog, 
 
 (GUI concept)
 
-## 2.5 End Game Menu
-#### 2.5.1 Failure
+#### 2.5 End Game Menu
+##### 2.5.1 Failure
 If the player fails to get the required number of points within the time limit they are shown a screen that says “GAME OVER!” with 3 small buttons beneath it:  Main Menu, Breed Choice, and Play Again
 
-#### 2.5.2 Success
+##### 2.5.2 Success
 If the player completes all 5 levels they are shown a screen that says “WINNER!” and displays their score. There are also 2 buttons: Play again and Main Menu
 
 (GUI concept)
