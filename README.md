@@ -7,12 +7,14 @@ Example:
 ## CS 110 Final Project
 ### Semester, Year
 
+### CS 110 Final Project, Spring, 2018
+
 [https://github.com/<repo>](#)
 
 [link to demo presentation slides](#)
 
 ### Team: Indigo
-#### Team Names Natalie Anselmi, Maggie Chen, and Destiny Walcott
+#### Team Names: Natalie Anselmi, Maggie Chen, and Destiny Walcott
 
 ***
 
@@ -21,35 +23,30 @@ This game (name TBD) is a side scrolling fetch game. The player picks one of <6>
 
 ***    
 
-## User Interface Design
-* A wireframe or drawing of the user interface concept along with a short description of the interface. You should have one for each screen in your program.
-    * For example, if your program has a start screen, game screen, and game over screen, you should include a wireframe / screenshot / drawing of each one and a short description of the components
-    * You should also have a screenshot of your final GUI
-
-***   
+## User Interface Design  
 2.1 Main Menu/Start Screen
-This screen is the first thing that the user sees. It gives the user the option to play the game by clicking <start>, to leave the game by clicking <quit>, or to view the instructions by clicking <instructions>.
+This screen is the first thing that the user sees. It gives the user the option to play the game by clicking "start", to leave the game by clicking "quit", or to view the instructions by clicking "instructions".
 
-<GUI concept>
+(GUI concept)
 
 2.2 Instructions Screen
-This screen will display a short description of the game and show the user how to play the game. From this screen, the user will be able to play the game by clicking <continue>, return to the main menu by clicking <main menu>, or leave the game by clicking <quit>.
+This screen will display a short description of the game and show the user how to play the game. From this screen, the user will be able to play the game by clicking "continue", return to the main menu by clicking "main menu", or leave the game by clicking "quit".
 
-<GUI concept>
+(GUI concept)
 
 2.3 Breed Choice
 This screen will display pictures <6> dog breeds. Each dog box would include  Hovering the mouse over each breed box shows a floating text box displaying:  
    * Strengths (ex: fast runner, etc) TBD
    * Weaknesses (ex: low jumper, etc) TBD
 
-<GUI concept>
+(GUI concept)
 
 2.4 The Game Menu
 This is where gameplay takes place (rolling screen on a loop). Frisbees are launched from the right of the screen and the player will use the arrow keys to move within the field. As the ground scrolls in later levels, obstacles will appear. The player will have to use the spacebar to jump and get frisbees and clear obstacles. If the dog fails to jump over an obstacle, the dog trips and can’t move for <3> seconds. 
 
 Possibilities of increasing difficulty: Moving obstacles that approach the dog, decreasing the time limit every level
 
-<GUI concept>
+(GUI concept)
 
 2.5 End Game Menu
 2.5.1 Failure
@@ -57,7 +54,7 @@ If the player fails to get the required number of points within the time limit t
 2.5.2 Success
 If the player completes all 5 levels they are shown a screen that says “WINNER!” and displays their score. There are also 2 buttons: Play again and Main Menu
 
-<GUI concept>
+(GUI concept)
 
 ***
 ## Program Design
