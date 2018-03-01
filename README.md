@@ -4,19 +4,19 @@
 
 [GitHub URL](https://github.com/binghamtonuniversity-cs110/final-project-spr18-indigo.git)
 
-[link to demo presentation slides (TBD)](#)
+[Demo Presentation Slides (TBD)](#)
 
 ### Team: Indigo
 #### Team Names: Natalie Anselmi, Maggie Chen, and Destiny Walcott
 
 ***
 
-## Project Description
+## 1. Project Description
 This game (name TBD) is a side scrolling fetch game. The player picks one of <6> dog breeds, and then has to catch frisbees. Frisbees are automatically launched across the screen and come in 5 different colors, each with a different point value (tentatively: Black = - 25, White = 0, Red = 10, Blue = 20, Green = 40). The player controls their dog with the arrow keys and uses the spacebar to jump and catch frisbees. There is <a time limit> to reach <a total number of points> per level, and <5> levels total.
 
 ***    
 
-## User Interface Design  
+## 2. User Interface Design  
 #### 2.1 Main Menu/Start Screen
 This screen is the first thing that the user sees. It gives the user the option to play the game by clicking "start", to leave the game by clicking "quit", or to view the instructions by clicking "instructions".
 
@@ -41,7 +41,7 @@ Possibilities of increasing difficulty: Moving obstacles that approach the dog, 
 
 (GUI concept)
 
-#### 2.5 End Game Menu
+#### 2.5 The Game Over Menu
 ##### 2.5.1 Failure
 If the player fails to get the required number of points within the time limit they are shown a screen that says “GAME OVER!” with 3 small buttons beneath it:  Main Menu, Change Breed Choice, and Play Again
 
@@ -51,7 +51,7 @@ If the player completes all 5 levels they are shown a screen that says “WINNER
 (GUI concept)
 
 ***
-## Program Design
+## 3. Program Design
 #### 3.1 Non-Standard Libraries and Modules Used
 TBD
 
@@ -62,24 +62,17 @@ TBD
 TBD
 
 ***
-## Tasks and Responsibilities
-### Software Lead - [Maggie Chen]
-#### TBD
+## 4. Tasks and Responsibilities
+#### 4.1 Software Lead - [Maggie Chen]
+TBD
 
-### Front End Specialist - [Natalie Anselmi]
-#### TBD
+#### 4.2 Front End Specialist - [Natalie Anselmi]
+TBD
 
-### Back End Specialist - [Destiny Walcott]
-#### TBD
+#### 4.3 Back End Specialist - [Destiny Walcott]
+TBD
 
-## Testing
-#### TBD
- 
+***
+## 5. Testing
+TBD
 
-* A copy of your ATP
-
-| Step                  | Procedure     | Expected Results  | Actual Results |
-| ----------------------|:-------------:| -----------------:| -------------- |
-|  1  | Run Counter Program  | GUI window appears with count = 0  |          |
-|  2  | click count button  | display changes to count = 1 |                 |
-etc...
