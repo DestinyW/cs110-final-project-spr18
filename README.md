@@ -3,7 +3,7 @@
     * Github URL
     * Project Demo Presentation as Google Slide URL
 Example:
-# Project Title
+# Fetch Game
 ## CS 110 Final Project
 ### Spring, 2018
 
