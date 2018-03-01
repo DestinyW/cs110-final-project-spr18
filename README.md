@@ -5,9 +5,7 @@
 Example:
 # Project Title
 ## CS 110 Final Project
-### Semester, Year
-
-### CS 110 Final Project, Spring, 2018
+### Spring, 2018
 
 [https://github.com/<repo>](#)
 
