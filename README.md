@@ -20,7 +20,7 @@ This game (name TBD) is a side scrolling fetch game. The player picks one of <6>
 #### 2.1 Main Menu/Start Screen
 This screen is the first thing that the user sees. It gives the user the option to play the game by clicking "start", to leave the game by clicking "quit", or to view the instructions by clicking "instructions".
 
-(GUI concept)
+![Alt Text](https://imgur.com/a/uOf1X)
 
 #### 2.2 Instructions Screen
 This screen will display a short description of the game and show the user how to play the game. From this screen, the user will be able to play the game by clicking "continue", return to the main menu by clicking "main menu", or leave the game by clicking "quit".
