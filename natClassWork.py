@@ -1,15 +1,15 @@
 class Dog:
-    def __init__(self, x, y, z, pose):
+    def __init__(self, x, y, pose):
 
-    def moveForward(self, x, y...):
+    def moveForward(self, x, y):
 
-    def moveBack(self, x, y...):
+    def moveBack(self, x, y):
 
-    def jumpUp(self, z, pose...):
+    def jumpUp(self, x, y, pose):
 
-    def tripOver(self, pose...):
+    def tripOver(self, pose):
 
-    def catchDisk(self...):
+    def catchDisk(self):
 
 class Disk:
      def __init__(self, x, y, z, speed, color):
