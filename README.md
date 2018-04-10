@@ -14,28 +14,26 @@
 ***
 
 ## 1. Project Description
-This game (name TBD) is a side scrolling fetch game. The player picks one of <6> dog breeds, and then has to catch frisbees. Frisbees are automatically launched across the screen and come in 5 different colors, each with a different point value (tentatively: Black = - 25, White = 0, Red = 10, Blue = 20, Green = 40). The player controls their dog with the arrow keys and uses the spacebar to jump and catch frisbees. There is <a time limit> to reach <a total number of points> per level, and <5> levels total.
+Go, Fetch! is a side scrolling fetch game. By controlling a dog the player has to catch frisbees. Frisbees are automatically launched across the screen and come in 4 different colors, each with a different point value (White = - 30, Yellow = 0, Purple = +10, Red = +20). The player controls their dog with the arrow keys and uses the spacebar to jump and catch frisbees and avoild hurdles. There is 3 minute time limit to reach <a total number of points>. the player wins if they get over <that number> of points and loses if they either fail to do so or get <-60> points.
 
 ***    
 
 ## 2. User Interface Design  
 #### 2.1 Main Menu/Start Screen
-This screen is the first thing that the user sees. It gives the user the option to play the game by clicking "start", to leave the game by clicking "quit", or to view the instructions by clicking "instructions".
+This screen is the first thing that the user sees. It gives the user the option to play the game by clicking "Play", to leave the game by clicking "Quit", or to view the instructions by clicking "Instructions".
 
 
 #### 2.2 Instructions Screen
-This screen will display a short description of the game and show the user how to play the game. From this screen, the user will be able to play the game by clicking "continue", return to the main menu by clicking "main menu", or leave the game by clicking "quit".
-
+These 2 screens display a short description of the game and show the user how to play the game. From the first instructions page the player can hit "Menu" to return to the Main Menu or "Next" to go on to the next page. From the second instructions page the player can hit "Menu" to return to the Main Menu, "Back" to go to the first instrucions page, or "Play" to begin the game.
 
 
 #### 2.4 The Game Screen
-This is where gameplay takes place. Frisbees are launched from the right of the screen and the player will use the arrow keys to move within the field. As the ground scrolls in later levels, obstacles will appear. The player will have to use the spacebar to jump and get frisbees and clear obstacles. If the dog fails to jump over an obstacle, the dog trips and can’t move for <3> seconds. 
-
+This is where gameplay takes place. Frisbees are launched from the right of the screen and the player will use the arrow keys to move within the field. the feild is divided into a 'near' and 'far half' and the user uses the up and down arrow keys to move between the halves of the feild. Frisbees that can be caught in the far feild are darker than those in the near feild. 20 seconds into the game hurdles begin to appear. The player must use the spacebar to jump and get frisbees and clear hurdles. If the dog fails to jump over a hurdles, the dog trips and can’t move for 3 seconds. 
 
 
 #### 2.5 The Game Over Menu
 ##### 2.5.1 Failure
-If the player fails to get the required number of points within the time limit they are shown a screen that says “GAME OVER!” with 2 small buttons beneath it:  Menu and Play Again
+If the player fails to get the required number of points within the time limit or reaches -60 points they are shown a screen that says “GAME OVER!”. There are 2 buttons: "Menu"
 
 ##### 2.5.2 Success
 If the player crosses the <point threshold> in the time limit they are shown a screen that says “WINNER!”, displays their score, and the top 5 scores. There are also 2 buttons: Play again and Main Menu
