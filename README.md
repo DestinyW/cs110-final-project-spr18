@@ -33,10 +33,10 @@ This is where gameplay takes place. Frisbees are launched from the right of the 
 
 #### 2.5 The Game Over Menu
 ##### 2.5.1 Failure
-If the player fails to get the required number of points within the time limit or reaches -60 points they are shown a screen that says “GAME OVER!”. There are 2 buttons: "Menu"
+If the player fails to get the required number of points within the time limit or reaches -60 points they are shown a screen that says “GAME OVER!”. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which starts the game again.
 
 ##### 2.5.2 Success
-If the player crosses the <point threshold> in the time limit they are shown a screen that says “WINNER!”, displays their score, and the top 5 scores. There are also 2 buttons: Play again and Main Menu
+If the player crosses the <point threshold> in the time limit they are shown a screen that says “WINNER!”, displays their score, and the top 5 scores. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which starts the game again.
 
 
 ***
