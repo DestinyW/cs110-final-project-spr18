@@ -6,7 +6,7 @@ def main():
         print(dog)
     if __name__ == "__main__":
         disk = Disk(10, 5, 0, red)
-        print(disk)
+        print(frisbee)
     if __name__ == "__main__":
         hurdle = Hurdle(10, 5)
         print(hurdle)

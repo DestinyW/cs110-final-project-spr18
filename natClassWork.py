@@ -1,5 +1,10 @@
 import sys
 import pygame
+import random
+
+black = (0,0,0)
+white = (255,255,255)
+red = (255,0,0)
 
 class Dog(pygame.sprite.Sprite):
     def __init__(self, name):
@@ -15,7 +20,6 @@ class Dog(pygame.sprite.Sprite):
         self.rect.bottom = HEIGHT - 10
         # set other attributes
         self.name = name
-        self.speed_y = 0
 
     def update(self):
         self.speed_y = 0
@@ -40,7 +44,7 @@ class Dog(pygame.sprite.Sprite):
 
     def tripOver(self, pose):
 
-    def catchDisk(self):
+    def catchFrisbee(self):
 
 class Frisbee(pygame.sprite.Sprite):
     def __init__(self, image):
@@ -73,13 +77,41 @@ class Hurdle(pygame.sprite.Sprite):
             self.speed_x = random.randrange(-3, 3)
 
 class Timer(pygame.sprite.Sprite):
-    def __init__(self, x, y, time):
-        self.x = x
-        self.y = y
-        self.time = time
+    def __init__(self):
+        self.time = 0
+        self.font = pygame.font.SysFont('monospace', 15)
+
+    def draw(self, screen):
+        txt = self.font.render('Time: ' + str(self.timme), True, black)
+        screen.blit(txt, (0,0))
+
+    def add(self):
+        self.time += 1
+
+    def val(self):
+        return self.time
+
+    def reset(self):
+        self.time = 0
 
 class Score(pygame.sprite.Sprite):
-    def __init__(self, x, y, score):
-        self.x = x
-        self.y = y
-        self.score = score
+    def __init__(self):
+        self.score = 0
+        self.font = pygame.font.SysFont('monospace', 15)
+
+    def draw(self, screen):
+        txt = self.font.render('Score: ' + str(self.score), True, black)
+        screen.blit(txt, (0,0))
+
+    def add(self):
+        self.score += 1
+
+    def val(self):
+        return self.score
+
+    def reset(self):
+        self.score = 0
+
+    def draw_gameover(self, screen):
+        txt = self.font.render('GAMEOVER! You Scored ' + str(self.score) + ' points. Press \'Again!\' to restart.', True, black)
+        screen.blit(txt, (400 - text.get_width() / 2, 100))
