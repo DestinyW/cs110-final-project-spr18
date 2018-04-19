@@ -1,36 +1,27 @@
 import pygame
 import random
 
-#model
+# model
 class Hurdle(pygame.sprite.Sprite):
-    def __init__(self, name, x, y, image):
+    def __init__(self, name, x, y, image_file):
         # initialize all the sprite functionality
         pygame.sprite.Sprite.__init__(self)
         # create surface object image
-        self.image = pygame.image.load('hurdle.png').convert_alpha()
-        self.image.set_colorkey(COLOR)
+        self.image = pygame.image.load(image_file).convert_alpha()
         # get the rectangle for positioning
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
         # set other attributes
         self.name = name + str(id(self))
-        self.speed = 4
+        self.speed = random.randrange(4,8)
 
-    # def rest_pos(self):
-    #     self.rect.x = random.randrange(-1,-2)
-    #     self.rect.y = random.randrange(HEIGHT - 2)
+    def reset_pos(self):
+        self.rect.x = random.randrange(-1,-2)
+        self.rect.y = random.randrange(screen_height - self.rect.width)
 
     def update(self):
-        # self.rect.x += 1
-        # self.rect.x += 1
-        # """resets any hurdles that slides off the screen
-        #     on the left back to the right"""
-        # if self.rect.x < WIDTH:
-        #     self.rest_pos()
-
-        random_x = random.randrange(-1,2)
-        # random_y = random.randrange(-1,2)
-        self.rect.x += random_x
-        # self.rect.y += random_y
-        print("'Update me,' says " + self.name)
+        self.rect.x -= 1
+        # resets any hurdles that slides off the screen
+        if self.rect.x > screen_width + 10:
+            self.reset_pos()
