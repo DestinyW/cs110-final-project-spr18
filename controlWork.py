@@ -5,7 +5,7 @@ import pygame
 #from classes import score
 #from classes import timer
 from classes import background
-from classes import button
+#from classes import button
 
 #The ONLY thing this code does so far is open a pygame window....
 class Controller:
@@ -27,17 +27,16 @@ class Controller:
                     pygame.quit()
                     quit()
             self.screen.fill([255, 255, 255])   #Fill screen with white
-            self.screen.blit(self.mainmenu.image, self.mainmenu.rect) #put BG over white, under other objects.
+            self.screen.blit(self.mainmenu.image, (0,0)) #put BG over white, under other objects.
         
-        #pygame.draw.rect(self.screen, red, (306, 145, 191, 68))    #start of trying to figure out buttons
+            #pygame.draw.rect(self.screen, [255, 255, 255], (306, 470, 191, 68))
+            #self.play.set_colorkey([255, 255, 255])#start of trying to figure out buttons
     
-        pygame.display.update()
+            pygame.display.flip()
 
     #def game_rules1(self):              #Set up instructions screen 1
-    #pass
     
     #def game_rules1(self):
-    #pass
     
 
     """This is the Main Loop of the Game"""
