@@ -42,7 +42,7 @@ If the player crosses the <point threshold> in the time limit they are shown a s
 ***
 ## 3. Program Design
 #### 3.1 Non-Standard Libraries and Modules Used
-TBD
+pygame
 
 #### 3.2 Class and File Relationships
 TBD
