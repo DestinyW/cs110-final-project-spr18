@@ -19,7 +19,7 @@ class Frisbee(pygame.sprite.Sprite):
     def reset_pos(self):
         self.rect.x = random.randrange(-1,-2)
         self.rect.y = random.randrange(screen_height - self.rect.width)
-    
+
     ######I think we need a throw function where every random amount of time a new frisbee is thrown
         ########https://www.pygame.org/docs/ref/time.html can probably help with this again
     ######it pics randomly from a list of the png files or something?
@@ -28,6 +28,7 @@ class Frisbee(pygame.sprite.Sprite):
 
     def update(self):
         self.rect.x -= 1
+        #self.rect.y = random.randrange(self.rect.y-1,self.rect.y+1)
         # resets any frisbees that slides off the screen
         if self.rect.x > screen_width + 10:
             self.reset_pos()

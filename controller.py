@@ -20,7 +20,7 @@ class Controller:
         self.hurdles = pygame.sprite.Group()
         self.dog = dog.Dog("Fido", 50, 50, "GUI/GSDog1.png")
         self.all_sprites = pygame.sprite.Group((self.dog,)+tuple(self.frisbees)+tuple(self.hurdles)+tuple(self.buttons))
-    
+
     def game_intro(self):               #Set up game intro screen. still missing buttons.
         intro = True
         while intro:
@@ -30,9 +30,9 @@ class Controller:
                 gameDisplay.fill(white)   #Fill screen with white
                 screen.blit(BackGround.image, BackGround.rect) #put BG over white, under other objects.
             background = Background('MainMenuBG.png', [0,0])     #load BG image
-    
+
         pygame.display.update()
-    
+
     def game_rules1(self):              #Set up instructions screen 1
         pass
     def game_rules1(self):
@@ -51,12 +51,19 @@ class Controller:
                 if event.type == pygame.KEYDOWN:
                     if(event.key == pygame.K_UP):
                         self.dog.moveUp()
-        
+                    if event.key == pygame.K_SPACE:
+                        if self.dog.Jumping == False:
+                            self.dog.Jumping == True:
+
             #check for collisions
-            catch = pygame.sprite.spritecollide(self.dog, self.frisbee, True)
-            
-            trip = pygame.sprite.spritecollide(self.dog, self.hurdle, True)
-            
+            if self.dog.jumping == False:
+                catch = pygame.sprite.spritecollide(self.dog, self.frisbee, True)
+
+                trip = pygame.sprite.spritecollide(self.dog, self.hurdle, True)
+            # Jason told me to add this here
+            if self.dog.jumping == True:
+                self.dog.jump()
+
             #redraw the entire screen
             self.screen.blit(self.background, (0, 0))
             self.all_sprites.draw(self.screen)
