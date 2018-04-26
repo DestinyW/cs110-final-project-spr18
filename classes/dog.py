@@ -70,17 +70,12 @@ class Dog(pygame.sprite.Sprite):
 
 
 
-# methods to make the dog move easier
-######since we have the screen divided into 2 halves the dog can run along these methods have to be more focused on where it is I think
-#######Assuming the dog starts in the front half of the feild dog should be centered on (pixles) x=400 (halfway through the screen) y=142.
+# methods to make the dog move easier.
     def moveUp(self):
         self.rect.y -= self.speed
-    ######if dog is in Lower field half and Up arrow is pressed, the dog moves to x+400 y=296
-    ######if the dog is in the upper field half and the Up arrow is pressed, nothing happens
+
     def moveDown(self):
         self.rect.y += self.speed
-    ######if dog is in upper field half and down arrow is pressed, the dog moves to x=400 y=142
-    ######if the dog is in the Lower field half and the down arrow is pressed, nothing happens
 
     def jumpUp(self, y):
         if self.jump == True:
@@ -108,20 +103,6 @@ class Dog(pygame.sprite.Sprite):
         #temp = pos_change(self.vector,self.gravity,time) #make sure to define pos_change
         #self.rect.x+=temp[0]
         #self.rect.y+=temp[1]
-
-    ######The dogs location should go from x=400 to y+=140
-    ######the dog should switch to a different sprite for a second here (if possible)
-    ######https://www.pygame.org/docs/ref/time.html might have what we need
-
-    #####def runDog(self)
-    ######if possible every set period of time 80 milliseconds or so the dog should switch from GSDogRun1.png to GSDogRun2.png, same link above should help
-
-
-# method that will update the time remaning
-# failed attempt to jump over hurdle decreases time by 3 seconds
-########There should be a function in the Timer class (called something like 'decrease time') that minues 3 seconds from the timer; and a function in the dog class called 'jump' where the dog jumps (and if possible, switches to the GSDogJump.png)
-
-#########The controller will check for a collision between the hurdle and the dog and if there is a collision, call decrease_time() and if there is not then does nothing
 
 
 # updates players position on the screen
