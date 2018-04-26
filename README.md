@@ -27,15 +27,15 @@ This screen is the first thing that the user sees. It gives the user the option 
 These 2 screens display a short description of the game and show the user how to play the game. From the first instructions page the player can hit "Menu" to return to the Main Menu or "Next" to go on to the next page. From the second instructions page the player can hit "Menu" to return to the Main Menu, "Back" to go to the first instrucions page, or "Play" to begin the game.
 
 
-#### 2.4 The Game Screen
+#### 2.3 The Game Screen
 This is where gameplay takes place. Frisbees are launched from the right of the screen and the player will use the arrow keys to move within the field. The feild is divided into a 'near' and 'far half' and the user uses the up and down arrow keys to move between the halves of the field. Frisbees that can be caught in the far field are darker than those in the near field. 20 seconds into the game hurdles begin to appear. The player must use the up and down arrow keys to get frisbees and avoid hurdles. Each time the dog fails to clear a hurdle, its health bar will decrease by 1. 
 
 
-#### 2.5 The Game Over Menu
-##### 2.5.1 Failure
+#### 2.4 The Game Over Menu
+##### 2.4.1 Failure
 If the player fails to get the required number of points within the time limit or reaches -60 points they are shown a screen that says “GAME OVER!”. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which starts the game again.
 
-##### 2.5.2 Success
+##### 2.4.2 Success
 If the player crosses the <point threshold> in the time limit they are shown a screen that says “WINNER!”, displays their score, and the top 5 scores. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which starts the game again.
 
 
