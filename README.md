@@ -62,7 +62,7 @@ Button
 The software lead is responsible for the overall project management in terms of ensuring the quality and functionality of the code. She also makes sure that there is proper communication between the front-end and back-end specialists so that conflicts may be resolved in an effective manner. Moreover, she also schedules periodic meetings with the group to collaboratively discuss the progress and technical issues. She's also responsible in creating and updating the proposal, presentation slides, and test files for the program.
 
 #### 4.2 Front End Specialist - [Natalie Anselmi]
-TBD
+Designing the look of GUI, coding the main loop, and handling events in the controller. Responsible for the User Interface Design.
 
 #### 4.3 Back End Specialist - [Destiny Walcott]
 TBD
