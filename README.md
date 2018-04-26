@@ -14,7 +14,7 @@
 ***
 
 ## 1. Project Description
-In "Go, Fetch!" the player controls a dog to catch frisbees. Frisbees are automatically launched on one plane across the screen and come in 4 different colors, each with a different point value (White = - 30, Yellow = 0, Purple = +10, Red = +20). The player controls their dog with the up and down arrow keys to catch frisbees and avoild walls. Each time the player hits a wall the dog loses 1 health, if the dog reaches 0 health the player loses. The game takes 4 minutes to play, if at the end of 3 minutes the dog still has health then the player wins.
+In "Go, Fetch!" the player controls a dog to catch frisbees. Frisbees are automatically launched on one plane across the screen and come in 4 different colors, each with a different point value (White = - 30, Yellow = 0, Purple = +10, Red = +20). The player controls their dog with the up and down arrow keys to catch frisbees and avoild walls. Each time the player hits a wall the dog loses 1 health, if the dog reaches 0 health the player loses. The game takes 4 minutes to play, if at the end of 4 minutes the dog still has health then the player wins.
 
 ***    
 
