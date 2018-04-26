@@ -14,7 +14,7 @@
 ***
 
 ## 1. Project Description
-Go, Fetch! is a side scrolling fetch game. By controlling a dog the player has to catch frisbees. Frisbees are automatically launched on one plane across the screen and come in 4 different colors, each with a different point value (White = - 30, Yellow = 0, Purple = +10, Red = +20). The player controls their dog with the up and down arrow keys to catch frisbees and avoild hurdles. There is 3 minute time limit to reach 100. the player wins if they get over that number of points and loses if they either fail to do so or get -60 points.
+In "Go, Fetch!" the player controls a dog to catch frisbees. Frisbees are automatically launched on one plane across the screen and come in 4 different colors, each with a different point value (White = - 30, Yellow = 0, Purple = +10, Red = +20). The player controls their dog with the up and down arrow keys to catch frisbees and avoild walls. Each time the player hits a wall the dog loses 1 health, if the dog reaches 0 health the player loses. The game takes 4 minutes to play, if at the end of 3 minutes the dog still has health then the player wins.
 
 ***    
 
@@ -28,15 +28,15 @@ These 2 screens display a short description of the game and show the user how to
 
 
 #### 2.3 The Game Screen
-This is where gameplay takes place. Frisbees are launched from the right of the screen and the player will use the arrow keys to move within the field. The feild is divided into a 'near' and 'far half' and the user uses the up and down arrow keys to move between the halves of the field. Frisbees that can be caught in the far field are darker than those in the near field. 20 seconds into the game hurdles begin to appear. The player must use the up and down arrow keys to get frisbees and avoid hurdles. Each time the dog fails to clear a hurdle, its health bar will decrease by 1. 
+This is where gameplay takes place. Frisbees are launched from the right of the screen and the player will use the arrow keys to move within the field. The player must moves to get frisbees and avoid walls. Each time the dog fails to avoid a wall, its health bar will decrease by 1. 
 
 
 #### 2.4 The Game Over Menu
 ##### 2.4.1 Failure
-If the player fails to get the required number of points within the time limit or reaches -60 points they are shown a screen that says “GAME OVER!”. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which starts the game again.
+If the player runs out of health within the time limit then gameplay ends and they are shown a screen that says “GAME OVER!”. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which starts the game again.
 
 ##### 2.4.2 Success
-If the player crosses the <point threshold> in the time limit they are shown a screen that says “WINNER!”, displays their score, and the top 5 scores. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which starts the game again.
+If the player still has health at the end of the time limit they are shown a screen that says “Good job!”. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which starts the game again.
 
 
 ***
@@ -50,9 +50,8 @@ TBD
 #### 3.3 List of Classes
 Dog
 Disk
-Hurdle
+Wall
 Timer
-Score
 Health Bar
 Background
 Button
