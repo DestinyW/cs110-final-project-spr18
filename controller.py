@@ -1,12 +1,13 @@
 import pygame
-from classes import dog
-from classes import frisbee
-from classes import hurdle
-from classes import score
-from classes import timer
+#from classes import dog
+#from classes import frisbee
+#from classes import hurdle
+#from classes import score
+#from classes import timer
 from classes import background
 from classes import button
 
+#The ONLY thing this code does so far is open a pygame window....
 class Controller:
     def __init__(self, width=800, height=800):
         pygame.init()
@@ -14,60 +15,60 @@ class Controller:
         self.height = height
         self.screen = pygame.display.set_mode((self.width, self.height))
         self.background = pygame.Surface(self.screen.get_size()).convert()
-        """Load the sprites that we need"""
-        self.buttons = pygame.sprite.Group()
-        self.frisbees = pygame.sprite.Group()
-        self.hurdles = pygame.sprite.Group()
-        self.dog = dog.Dog("Fido", 50, 50, "GUI/GSDog1.png")
-        self.all_sprites = pygame.sprite.Group((self.dog,)+tuple(self.frisbees)+tuple(self.hurdles)+tuple(self.buttons))
+        self.button = pygame.Surface(self.screen.get_size()).convert()
+        
+        self.mainmenu = background.Background("GUI/MainMenu.png", [0, 0])
+        self.instructions1 = background.Background("GUI/Inst1BG.png", [0, 0])
+        self.instructions2 = background.Background("GUI/Inst2BG.png", [0, 0])
+    
+        self.InstructionsMM = button.Button("GUI/InstructionsMM.png", 306, 470, "rules")
+
 
     def game_intro(self):               #Set up game intro screen. still missing buttons.
         intro = True
         while intro:
             for event in pygame.event.get():
-                if event.type == gygame.QUIT:
+                if event.type == pygame.QUIT:
                     pygame.quit()
-                gameDisplay.fill(white)   #Fill screen with white
-                screen.blit(BackGround.image, BackGround.rect) #put BG over white, under other objects.
-            background = Background('MainMenuBG.png', [0,0])     #load BG image
+                    quit()
+                if event.type == MOUSEBUTTONDOWN and event.button == 1:    #button to  instructions page
+                    mouse = pygame.mouse.getpos
+                        if InstructionsMM.collidrect(mouse):
+                            game_rules1()
 
-        pygame.display.update()
+            self.screen.fill([255, 255, 255])   #Fill screen with white
+            self.screen.blit(self.mainmenu.image, (0,0)) #put BG over white, under other objects.
+            
+            pygame.display.flip()
 
     def game_rules1(self):              #Set up instructions screen 1
-        pass
-    def game_rules1(self):
-        pass
-    def mainLoop(self):
-        """This is the Main Loop of the Game"""
-        game_intro()
-        game_rules1()
-        game.rules2()
-        pygame.key.set_repeat(1,50)
-        while True:
-            self.background.fill((250, 250, 250))
+        rules1 = True
+        while rules1:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    sys.exit()
-                if event.type == pygame.KEYDOWN:
-                    if(event.key == pygame.K_UP):
-                        self.dog.moveUp()
-                    if event.key == pygame.K_SPACE:
-                        if self.dog.Jumping == False:
-                            self.dog.Jumping == True:
-
-            #check for collisions
-            if self.dog.jumping == False:
-                catch = pygame.sprite.spritecollide(self.dog, self.frisbee, True)
-
-                trip = pygame.sprite.spritecollide(self.dog, self.hurdle, True)
-            # Jason told me to add this here
-            if self.dog.jumping == True:
-                self.dog.jump()
-
-            #redraw the entire screen
-            self.screen.blit(self.background, (0, 0))
-            self.all_sprites.draw(self.screen)
+                    pygame.quit()
+                    quit()
+            self.screen.fill([255, 255, 255])   #Fill screen with white
+            self.screen.blit(self.instructions1.image, (0,0)) #put BG over white, under other objects.
+            
             pygame.display.flip()
+
+    def game_rules1(self):
+        rules2 = True
+        while rules2:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+            self.screen.fill([255, 255, 255])   #Fill screen with white
+            self.screen.blit(self.instructions2.image, (0,0)) #put BG over white, under other objects.
+            
+            pygame.display.flip()
+
+
+    def mainLoop(self):
+        """This is the Main Loop of the Game"""
+        self.game_intro()
 
 
 def main():
