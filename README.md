@@ -42,13 +42,14 @@ If the player still has health at the end of the time limit they are shown a scr
 ***
 ## 3. Program Design
 #### 3.1 Non-Standard Libraries and Modules Used
-pygame
+[Pygame]{https://www.pygame.org/}: A free set of Python modules that is designed for developing game applications. It includes various features including computer graphics and sound libraries
 
 #### 3.2 Class and File Relationships
 TBD
 
 #### 3.3 List of Classes
 Dog
+
 Disk
 Wall
 Timer
