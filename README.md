@@ -14,7 +14,7 @@
 ***
 
 ## 1. Project Description
-Go, Fetch! is a side scrolling fetch game. By controlling a dog the player has to catch frisbees. Frisbees are automatically launched across the screen and come in 4 different colors, each with a different point value (White = - 30, Yellow = 0, Purple = +10, Red = +20). The player controls their dog with the arrow keys and uses the spacebar to jump and catch frisbees and avoild hurdles. There is 3 minute time limit to reach 100. the player wins if they get over that number of points and loses if they either fail to do so or get -60 points.
+Go, Fetch! is a side scrolling fetch game. By controlling a dog the player has to catch frisbees. Frisbees are automatically launched on one plane across the screen and come in 4 different colors, each with a different point value (White = - 30, Yellow = 0, Purple = +10, Red = +20). The player controls their dog with the up and down arrow keys to catch frisbees and avoild hurdles. There is 3 minute time limit to reach 100. the player wins if they get over that number of points and loses if they either fail to do so or get -60 points.
 
 ***    
 
@@ -28,7 +28,7 @@ These 2 screens display a short description of the game and show the user how to
 
 
 #### 2.4 The Game Screen
-This is where gameplay takes place. Frisbees are launched from the right of the screen and the player will use the arrow keys to move within the field. the feild is divided into a 'near' and 'far half' and the user uses the up and down arrow keys to move between the halves of the field. Frisbees that can be caught in the far field are darker than those in the near field. 20 seconds into the game hurdles begin to appear. The player must use the spacebar to jump and get frisbees and clear hurdles. If the dog fails to jump over a hurdles, 3 seconds are removed from the timer. 
+This is where gameplay takes place. Frisbees are launched from the right of the screen and the player will use the arrow keys to move within the field. The feild is divided into a 'near' and 'far half' and the user uses the up and down arrow keys to move between the halves of the field. Frisbees that can be caught in the far field are darker than those in the near field. 20 seconds into the game hurdles begin to appear. The player must use the up and down arrow keys to get frisbees and avoid hurdles. Each time the dog fails to clear a hurdle, its health bar will decrease by 1. 
 
 
 #### 2.5 The Game Over Menu
