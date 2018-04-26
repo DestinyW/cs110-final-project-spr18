@@ -53,6 +53,7 @@ Disk
 Hurdle
 Timer
 Score
+Health Bar
 Background
 Button
 
