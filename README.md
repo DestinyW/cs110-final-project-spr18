@@ -1,4 +1,4 @@
-# Fetch Game
+# Go, Fetch!
 ## CS 110 Final Project
 ### Spring, 2018
 
