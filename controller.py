@@ -28,8 +28,9 @@ class Controller:
         self.instructions2 = background.Background("assets/Inst2.png", [0, 0])
         self.gamescreen = background.Background("assets/GameBG.png", [0, 0])
         self.winner = background.Background("assets/WinBG.png", [0, 0])
-        self.loser = background.Background("assets/LoseBG.png", [0, 0])
-
+        self.loser = background.Background("assets/LoseBG.png", [0, 0])  
+        
+        #buttons
         #buttons for the main menu
         self.InstructionsMM = button.Button("assets/InstructionsMM.png", 400, 500, "rules",True)
         self.PlayMM = button.Button("assets/PlayMM.png",400,600,"play",True)
@@ -40,6 +41,9 @@ class Controller:
         #buttons for the second instruction page
         self.Instback = button.Button("assets/Inst2Back.png", 300, 650, "back")
         self.Instplay = button.Button("assets/Inst2Play.png", 610, 650, "play")
+        #buttons for the end screens
+        self.EndAgain = button.Button("assets/EndAgain.png", 50, 695, "again")
+        self.EndMenu = button.Button("assets/EndMenu.png", 550, 670, "menu")
 
         #self.all_sprites = pygame.sprite.Group((self.dog)+(self.frisbees)+(self.walls))
 
@@ -134,30 +138,45 @@ class Controller:
         """
         set up the "You Won" Page
         """
+        button_group = pygame.sprite.Group([self.EndAgain,self.EndMenu])
         winner = True
         while winner:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     quit()
+                if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:       #setting up buttons
+                    mouse = pygame.mouse.get_pos()
+                    if self.EndAgain.rect.collidepoint(mouse):
+                        return 1
+                    if self.EndMenu.rect.collidepoint(mouse):
+                        self.gameIntro()
             self.screen.fill([255, 255, 255])   #Fill screen with white
             self.screen.blit(self.winner.image, (0,0)) #put BG over white, under other objects.
+            button_group.draw(self.screen)
             pygame.display.flip()
 
     def gameLost(self):
         """
         set up the "You Lost" Page
         """
-        winner = True
-        while winner:
+        button_group = pygame.sprite.Group([self.EndAgain, self.EndMenu])
+        loser = True
+        while loser:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     quit()
+                if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:   #setting up buttons
+                    mouse = pygame.mouse.get_pos()
+                    if self.EndAgain.rect.collidepoint(mouse):
+                        return 1
+                    if self.EndMenu.rect.collidepoint(mouse):
+                        self.gameIntro()
             self.screen.fill([255, 255, 255])   #Fill screen with white
             self.screen.blit(self.loser.image, (0,0)) #put BG over white, under other objects.
+            button_group.draw(self.screen)
             pygame.display.flip()
-
 
     def timer(self):
         #starting work on the timer
@@ -172,28 +191,15 @@ class Controller:
         #blit here?
 
     def mainLoop(self):
+        """
+        This is the main loop of the game
+        """
+        self.gameIntro()
+        #self.all_sprites = pygame.sprite.Group([self.walls, self.dog])
         while True:
-            """This is the Main Loop of the Game"""
-            self.gameIntro()
+            self.screen.fill([255, 255, 255])   #Fill screen with white
+            self.screen.blit(self.gamescreen.image, (0,0)) #put BG over white, under other objects
 
-            gameplay = True
-            while gameplay:
-                self.screen.fill([255, 255, 255])   #Fill screen with white
-                self.screen.blit(self.gamescreen.image, (0,0)) #put BG over white, under other objects.
-                pygame.display.flip()
-                pygame.quit()
-                quit()
-
-                # use this for the main loop. this code will test that if the dogs health is 0 then the game will exit
-                # maybe you might have to alter thus a little bit, but this is the general concept
-                # if(self.dog.health == 0):
-                #     self.dog.kill()
-                #     sys.exit()
-
-
-
-
-            #pyggame.time.set_timer(pygame.USEREVENT,1000)
             #check for collisions
             #trip = pygame.sprite.spritecollide(self.dog, self.walls, True)
             #if(trips):
@@ -201,8 +207,10 @@ class Controller:
                     #self.healthDown()
                 #else:
                     #self.gameLost()
-
-
+      
+            #pygame.time.set_timer(pygame.USEREVENT,1000)      
+            
+            pygame.display.flip()
 
 def main():
     main_window = Controller()
