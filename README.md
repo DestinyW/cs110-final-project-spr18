@@ -54,15 +54,11 @@ TBD
 
 - Wall: A class that defines the obstacles in gameplay. The dog can avoid the walls by moving up and down. If the dog fails to avoid a wall, it will lose 1 health (10 bars maximum), and a result of 0 causes failure and ends the game. 
 
-- Timer: A class that defines a certain amount of time the game will run. The time limit set for the game is 4 minutes.
-
-- Health Bar: A class that defines the health status of the dog in gameplay. The dog is given a maximum of 10 bars, which can decrease by 1 as it encounters a wall obstacle. Once the health bar reaches 0, the game will be compromised. 
-
 - Background: A class that defines the screen of the game, which is different as the program progresses. 
 
 - Button: 
 
-- Controller: 
+- Controller: (includes timer and health)
 
 ***
 ## 4. Tasks and Responsibilities
