@@ -77,6 +77,9 @@ TBD
 
 ***
 ## 5. Testing
-TBD
+#### 5.1 Testing Strategy
+- Menu Testing:
 
-[Acceptance Test Procedure](https://docs.google.com/document/d/1mRwjm5VlQiFG5ITpi4t685rkpe00hen6QSnsbdL7kWU/edit?usp=sharing)
+- Game Testing:
+
+#### 5.2 [Acceptance Test Procedure](https://docs.google.com/document/d/1mRwjm5VlQiFG5ITpi4t685rkpe00hen6QSnsbdL7kWU/edit?usp=sharing)
