@@ -1,12 +1,12 @@
 import pygame
 import time
 import sys
-#from classes import dog
-#from classes import frisbee
-#from classes import hurdle
-#from classes import score
-from classes import background
-from classes import button
+#from src import dog
+#from src import frisbee
+#from src import hurdle
+#from src import score
+from src import background
+from src import button
 
 class Controller:
     def __init__(self, width=800, height=800):
@@ -18,28 +18,28 @@ class Controller:
         self.button = pygame.Surface(self.screen.get_size()).convert()
         
         """Load sprites"""
-        #self.dog = dog.Dog("Conan", 50, 50, "GUI/GSDogRun1.png")    #will this interfere with the running animation?
+        #self.dog = dog.Dog("Conan", 50, 50, "assets/GSDogRun1.png")    #will this interfere with the running animation?
         #self.walls = pygame.sprite.Group()
         #self.frisbees = pygame.sprite.Group()
         
         #load background images
-        self.mainmenu = background.Background("GUI/MainMenu.png", [0, 0])
-        self.instructions1 = background.Background("GUI/Inst1.png", [0, 0])
-        self.instructions2 = background.Background("GUI/Inst2.png", [0, 0])
-        self.gamescreen = background.Background("GUI/GameBG.png", [0, 0])
-        self.winner = background.Background("GUI/WinBG.png", [0, 0])
-        self.loser = background.Background("GUI/LoseBG.png", [0, 0])
+        self.mainmenu = background.Background("assets/MainMenu.png", [0, 0])
+        self.instructions1 = background.Background("assets/Inst1.png", [0, 0])
+        self.instructions2 = background.Background("assets/Inst2.png", [0, 0])
+        self.gamescreen = background.Background("assets/GameBG.png", [0, 0])
+        self.winner = background.Background("assets/WinBG.png", [0, 0])
+        self.loser = background.Background("assets/LoseBG.png", [0, 0])
     
         #buttons for the main menu
-        self.InstructionsMM = button.Button("GUI/InstructionsMM.png", 400, 500, "rules",True)
-        self.PlayMM = button.Button("GUI/PlayMM.png",400,600,"play",True)
-        self.quitMM = button.Button("GUI/QuitMM.png",400,700,"quit",True)
+        self.InstructionsMM = button.Button("assets/InstructionsMM.png", 400, 500, "rules",True)
+        self.PlayMM = button.Button("assets/PlayMM.png",400,600,"play",True)
+        self.quitMM = button.Button("assets/QuitMM.png",400,700,"quit",True)
         #buttons for the first instructions page
-        self.menu = button.Button("GUI/InstMenu.png", 10, 650, "menu")
-        self.next = button.Button("GUI/Inst1Next.png", 610, 650, "next")
+        self.menu = button.Button("assets/InstMenu.png", 10, 650, "menu")
+        self.next = button.Button("assets/Inst1Next.png", 610, 650, "next")
         #buttons for the second instruction page
-        self.Instback = button.Button("GUI/Inst2Back.png", 300, 650, "back")
-        self.Instplay = button.Button("GUI/Inst2Play.png", 610, 650, "play")
+        self.Instback = button.Button("assets/Inst2Back.png", 300, 650, "back")
+        self.Instplay = button.Button("assets/Inst2Play.png", 610, 650, "play")
     
         #self.all_sprites = pygame.sprite.Group((self.dog)+(self.frisbees)+(self.walls))
         
