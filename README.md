@@ -48,21 +48,21 @@ If the player still has health at the end of the time limit they are shown a scr
 TBD
 
 #### 3.3 List of Classes
-Dog: A class that defines the player as a "dog" - it is an "active" object in gameplay. The dog will be able to move up and down the screen using the UP and DOWN arrows to catch frisbees and avoid walls. 
+- Dog: A class that defines the player as a "dog" - it is an "active" object in gameplay. The dog will be able to move up and down the screen using the UP and DOWN arrows to catch frisbees and avoid walls. 
 
-Frisbee: A class that defines an "active" subject in gameplay - primary point system. Frisbees will be "launched" from the right of the screen. They come in 4 different colors, each with a different point value (White = - 30, Yellow = 0, Purple = +10, Red = +20).
+- Frisbee: A class that defines an "active" subject in gameplay - primary point system. Frisbees will be "launched" from the right of the screen. They come in 4 different colors, each with a different point value (White = - 30, Yellow = 0, Purple = +10, Red = +20).
 
-Wall: A class that defines the obstacles in gameplay. The dog can avoid the walls by moving up and down. If the dog fails to avoid a wall, it will lose 1 health (10 bars maximum), and a result of 0 causes failure and ends the game. 
+- Wall: A class that defines the obstacles in gameplay. The dog can avoid the walls by moving up and down. If the dog fails to avoid a wall, it will lose 1 health (10 bars maximum), and a result of 0 causes failure and ends the game. 
 
-Timer: A class that defines a certain amount of time the game will run. The time limit set for the game is 4 minutes.
+- Timer: A class that defines a certain amount of time the game will run. The time limit set for the game is 4 minutes.
 
-Health Bar: A class that defines the health status of the dog in gameplay. The dog is given a maximum of 10 bars, which can decrease by 1 as it encounters a wall obstacle. Once the health bar reaches 0, the game will be compromised. 
+- Health Bar: A class that defines the health status of the dog in gameplay. The dog is given a maximum of 10 bars, which can decrease by 1 as it encounters a wall obstacle. Once the health bar reaches 0, the game will be compromised. 
 
-Background: A class that defines the screen of the game, which is different as the program progresses. 
+- Background: A class that defines the screen of the game, which is different as the program progresses. 
 
-Button: 
+- Button: 
 
-Controller: 
+- Controller: 
 
 ***
 ## 4. Tasks and Responsibilities
