@@ -16,12 +16,12 @@ class Controller:
         self.screen = pygame.display.set_mode((self.width, self.height))
         self.background = pygame.Surface(self.screen.get_size()).convert()
         self.button = pygame.Surface(self.screen.get_size()).convert()
-        
+
         """Load sprites"""
         #self.dog = dog.Dog("Conan", 50, 50, "assets/GSDogRun1.png")    #will this interfere with the running animation?
         #self.walls = pygame.sprite.Group()
         #self.frisbees = pygame.sprite.Group()
-        
+
         #load background images
         self.mainmenu = background.Background("assets/MainMenu.png", [0, 0])
         self.instructions1 = background.Background("assets/Inst1.png", [0, 0])
@@ -29,7 +29,7 @@ class Controller:
         self.gamescreen = background.Background("assets/GameBG.png", [0, 0])
         self.winner = background.Background("assets/WinBG.png", [0, 0])
         self.loser = background.Background("assets/LoseBG.png", [0, 0])
-    
+
         #buttons for the main menu
         self.InstructionsMM = button.Button("assets/InstructionsMM.png", 400, 500, "rules",True)
         self.PlayMM = button.Button("assets/PlayMM.png",400,600,"play",True)
@@ -40,9 +40,9 @@ class Controller:
         #buttons for the second instruction page
         self.Instback = button.Button("assets/Inst2Back.png", 300, 650, "back")
         self.Instplay = button.Button("assets/Inst2Play.png", 610, 650, "play")
-    
+
         #self.all_sprites = pygame.sprite.Group((self.dog)+(self.frisbees)+(self.walls))
-        
+
         # members used to track time
         self.font = pygame.font.SysFont('monospace', 15)
         self.minute = 5
@@ -100,7 +100,7 @@ class Controller:
                             return False
                         if retval == 1:
                             return True
-        
+
             self.screen.fill([255, 255, 255])   #Fill screen with white
             self.screen.blit(self.instructions1.image, (0,0)) #put BG over white, under other objects.
             button_group.draw(self.screen)
@@ -175,7 +175,7 @@ class Controller:
         while True:
             """This is the Main Loop of the Game"""
             self.gameIntro()
-            
+
             gameplay = True
             while gameplay:
                 self.screen.fill([255, 255, 255])   #Fill screen with white
@@ -184,8 +184,14 @@ class Controller:
                 pygame.quit()
                 quit()
 
+                # use this for the main loop. this code will test that if the dogs health is 0 then the game will exit
+                # maybe you might have to alter thus a little bit, but this is the general concept
+                # if(self.dog.health == 0):
+                #     self.dog.kill()
+                #     sys.exit()
 
-                
+
+
 
             #pyggame.time.set_timer(pygame.USEREVENT,1000)
             #check for collisions

@@ -1,114 +1,91 @@
 import pygame
 # import random
 
-# model
+# health bar
+# track and store score
+# high scorebroad
+
+"""model"""
+
+# color options
+red = (200,0,0)
+green = (0,200,0)
+
 class Dog(pygame.sprite.Sprite):
-    def __init__(self, name, x, y, img_file):
+    def __init__(self, name, x, y, image_file):
         # initialize all the sprite functionality
         pygame.sprite.Sprite.__init__(self)
         # create surface object image
-        self.original_image = pygame.image.load(image_file).convert_alpha()
-        self.image = self.original_image.copy()
+        self.image = pygame.image.load(image_file).convert_alpha()
         # get the rectangle for positioning
         self.rect = self.image.get_rect()
-        self.rect.centerx = x
-        self.rect.centery = y
-        # set up sprite location
-        self.rect.centerx = screen_width / 2
-        self.rect.centery = screen_height / 2
+        self.rect.x = x
+        self.rect.y = y
+# # set up sprite location
+# self.rect.centerx = width / 2
+# self.rect.centery = height / 2
         # set other attributes
-        self.moving_up = False
-        self.moving_down = False
-        self.jumping = False
-        self.jump_ticker = 0
-        self.falling = False
-        # self.size
-        self.speed = 10
-        self.velocity = 0
-        self.angle = 0
+        self.name = name
+        self.speed = 5
+        self.health = 3
 
-    def movement(self):
-        if not self.jumping:
-            if self.moving_up == True:
-                self.rect.centery -= self.speed
-            elif self.moving_down == True:
-                self.rect.centery += self.speed
-
-    def is_jumping(self):
-        if self.jumping == True:
-            # self.dog_jump = pygame.image.load("GSDogJump.png")
-            self.rotate = pygame.transform.rotate("GSDogJump.png", self.angle)
-            self.rect = self.rotate.get_rect()
-            self.angle += 1 % 90
-            self.image = self.rotate
-            self.rect = self.image.get_rect()
-            self.rect.center = (x,y)
-        else:
-
-
-    def is_falling(self):
-        if not self.jumping:
-            if self.falling == True:
-                self.rotate = pygame.transform.rotate("GSDogRun1.png", self.angle)
-                self.angle += 1 % 90
-                self.image = self.rotate
-                self.rect = self.image.get_rect()
-                self.rect.center = (x,y)
-            else:
-
-    def update(self):
-        if self.jumping:
-            self.is_jumping()
-        elif self.falling:
-            self.is_falling()
-        else:
-            self.movement()
-        print("updating position")
-
-
-
-
-
-
-# methods to make the dog move easier.
+"""methods to make the dog move easier"""
     def moveUp(self):
         self.rect.y -= self.speed
 
     def moveDown(self):
         self.rect.y += self.speed
 
-    def jumpUp(self, y):
-        if self.jump == True:
-            old_rect = self.rect
-            #change image and make sure to set rect.x,y to old_rect.x,y
-            self.gravity = 0
-            self.vector = [0,0]
-            # gravity and vector
-
-    def jump(self):
-        if self.falling == False:
-            if self.jump_ticker < 10:
-                #self.rect.y += 10
-                self.jump_ticker+=1
-                new_size = (self.original_size[0]*(1+self.jump_ticker/10),self.original_size[1]*(1+self.jump_ticker/10))
-            else:
-                self.Falling = True
+"""If the player collides with the hurdle, the players health decreases by 1
+    If the player dodges the hurdle, the players health stay the same
+"""
+    def tripOver(self, hurdle):
+        if(random.randrange(3)):
+            self.health -= 1
+            print("falls over hurdle")
+            return False
         else:
-            if self.jump_ticker > 0:
-                self.rect.y += 10:
-                self.jump_ticker-=1
-            else:
-                self.Falling = False
-                self.jumping = False
-        #temp = pos_change(self.vector,self.gravity,time) #make sure to define pos_change
-        #self.rect.x+=temp[0]
-        #self.rect.y+=temp[1]
+            print("successfully dodges hurdle")
+        return True
 
+# import colors
+    def health_bar(self):
+        # create a health bar image
+        # need 3 different images; 1 fill, 1 half fill, 1 empty
+        if self.health == 3:
+            # add image
+            self.health_bar_color = green
+        elif self.health <= 2 and self.health != 0:
+            # add image
+            self.health_bar_color = yellow
+        else:
+            self.health_bar_color = red
+            # OR
+            pygame.quit()
+        return pygame.draw.rect(self.health_bar_color, (800,25,25))
+        # upper right: (800, 0)
+        # upper left: (0,0)
 
-# updates players position on the screen
+"""health bar- guide"""
+    def draw_shield_bar(surf, x, y, pct):
+    if pct < 0:
+        pct = 0
+    BAR_LENGTH = 200
+    BAR_HEIGHT = 20
+    fill = (pct/100 * BAR_LENGTH)
+    outline_rect = pg.Rect(x, y, BAR_LENGTH, BAR_HEIGHT)
+    fill_rect = pg.Rect(x, y, fill, BAR_HEIGHT)
+    pg.draw.rect(surf, GREEN, fill_rect)
+    pg.draw.rect(surf, WHITE, outline_rect, 2)
+
+# draw health
+    if player.health >= 1:
+        game_display.blit(sprites.icon, (10, 50))
+        if player.health >= 2:
+            game_display.blit(sprites.icon, (10+32+10, 50))
+            if player.health >= 3:
+                game_display.blit(sprites.icon, (10+32+10+32+10, 50))
+
+"""updates players position on the screen"""
     def update(self):
-        # add jumping state
-        # can also add the image here
-        if self.jump == True:
-            # need sin and cos
         print("updating position")
