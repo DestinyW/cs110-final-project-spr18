@@ -181,6 +181,8 @@ class Controller:
                 self.screen.fill([255, 255, 255])   #Fill screen with white
                 self.screen.blit(self.gamescreen.image, (0,0)) #put BG over white, under other objects.
                 pygame.display.flip()
+                pygame.quit()
+                quit()
 
 
                 
