@@ -20,6 +20,7 @@ class Controller:
         self.mainmenu = background.Background("GUI/MainMenu.png", [0, 0])
         self.instructions1 = background.Background("GUI/Inst1BG.png", [0, 0])
         self.instructions2 = background.Background("GUI/Inst2BG.png", [0, 0])
+        self.GS = background.Background("GUI/GameBG.png", [0, 0])
     
         self.InstructionsMM = button.Button("GUI/InstructionsMM.png", 306, 470, "rules")
 
@@ -69,6 +70,17 @@ class Controller:
     def mainLoop(self):
         """This is the Main Loop of the Game"""
         self.game_intro()
+        
+        gameplay = True
+        while gameplay:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+            self.screen.fill([255, 255, 255])   #Fill screen with white
+            self.screen.blit(self.GS.image, (0,0)) #put BG over white, under other objects.
+            
+            pygame.display.flip()
 
 
 def main():
