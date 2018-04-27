@@ -1,12 +1,12 @@
 import pygame
 import time
-from classes import dog
-from classes import frisbee
-from classes import hurdle
-from classes import score
+import sys
+#from classes import dog
+#from classes import frisbee
+#from classes import hurdle
+#from classes import score
 from classes import background
 from classes import button
-import sys
 
 class Controller:
     def __init__(self, width=800, height=800):
