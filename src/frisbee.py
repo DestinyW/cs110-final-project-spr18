@@ -3,10 +3,18 @@ import random
 
 # model
 class Frisbee(pygame.sprite.Sprite):
-    def __init__(self, name, x, y, image_file):
+    def __init__(self, name, x, y, frisbee_number):
         # initialize all the sprite functionality
         pygame.sprite.Sprite.__init__(self)
         # create surface object image
+        if(frisbee_number == 0):
+            image_file = "assets/Purple.png"
+        elif(frisbee_number == 1):
+            image_file = "assets/Red.png"
+        elif(frisbee_number == 2):
+            image_file = "assets/White.png"
+        elif(frisbee_number == 3):
+            image_file = "assets/White.png"
         self.image = pygame.image.load(image_file).convert_alpha()
         # get the rectangle for positioning
         self.rect = self.image.get_rect()
@@ -15,20 +23,14 @@ class Frisbee(pygame.sprite.Sprite):
         # set other attributes
         self.name = name + str(id(self))
         self.speed = random.randrange(4,8)
+        self.screen_width, self.screen_height = pygame.display.get_surface().get_size()
 
     def reset_pos(self):
         self.rect.x = random.randrange(-1,-2)
         self.rect.y = random.randrange(screen_height - self.rect.width)
 
-    ######I think we need a throw function where every random amount of time a new frisbee is thrown
-        ########https://www.pygame.org/docs/ref/time.html can probably help with this again
-    ######it pics randomly from a list of the png files or something?
-    #######the frisbees are also going to have to move at a set speed from x=800 (right of screen) to x=0 (left of screen)
-    #######the only height the frisbees can be at is y = 280 (jump from lower field to catch) or y = 434 (jump from upper field)
-
     def update(self):
         self.rect.x -= 1
-        #self.rect.y = random.randrange(self.rect.y-1,self.rect.y+1)
         # resets any frisbees that slides off the screen
-        if self.rect.x > screen_width + 10:
+        if self.rect.x > self.screen_width + 10:
             self.reset_pos()

@@ -1,13 +1,13 @@
 import pygame
 import random
-import time
 import sys
 #from src import dog
-#from src import frisbee
-#from src import hurdle
+from src import frisbee
+from src import wall
 #from src import score
 from src import background
 from src import button
+from src import timer
 
 class Controller:
     def __init__(self, width=800, height=800):
@@ -19,13 +19,20 @@ class Controller:
         self.button = pygame.Surface(self.screen.get_size()).convert()
 
         """Load sprites"""
-        #self.dog = dog.Dog("Fido", 50, 50, "assets/GSDogRun1.png") 
-        #self.walls = pygame.sprite.Group()
-        #for i in range(5):
-        #x = random.randrange(10, 800)
-        #y = random.randrange(400, 650)
-        #self.walls.add(hurdle.Hurdle("wall", x, y, "assets/Wall.png"))
-        #self.frisbees = pygame.sprite.Group()
+        #self.dog = dog.Dog("Fido", 300, 300, "assets/GSDogRun1.png") 
+        #set up the walls
+        self.walls = pygame.sprite.Group()
+        for i in range(3):
+            x = random.randrange(750, 800)
+            y = random.randrange(400, 650)
+            self.walls.add(wall.Wall("walls", x, y, "assets/Wall.png"))
+        #Set up the frisbees
+        self.frisbees = pygame.sprite.Group()
+        for i in range(4):
+            x = random.randrange(750, 800)
+            y = random.randrange(400, 650)
+            frisbee_number = random.randrange(0,3)
+            self.frisbees.add(frisbee.Frisbee("disks", x, y, frisbee_number))
 
         #load background images
         self.mainmenu = background.Background("assets/MainMenu.png", [0, 0])
@@ -181,28 +188,18 @@ class Controller:
             button_group.draw(self.screen)
             pygame.display.flip()
 
-    def timer(self):
-        #starting work on the timer
-        if self.seconds == 0:
-            self.minute -= 1
-        self.seconds = (self.seconds - 1) % 60
-        digit_str = ""
-        if self.seconds < 10:
-            digit_str = "0"
-        new_time = str(self.minute)+":"+digit_str+str(self.seconds)
-
-        #blit here?
-
     def mainLoop(self):
         """
         This is the main loop of the game
         """
+        myfont = pygame.font.SysFont('Comic Sans MS', 30)
         self.gameIntro()
-        #self.all_sprites = pygame.sprite.Group([self.walls, self.dog])
-        while True:
+        t = timer.Timer(240)
+        self.all_sprites = pygame.sprite.Group([self.walls, self.frisbees])
+        while t.time_remaining() > 0:
             self.screen.fill([255, 255, 255])   #Fill screen with white
             self.screen.blit(self.gamescreen.image, (0,0)) #put BG over white, under other objects
-
+            textsurface = myfont.render(str(t.time_remaining()), False, (0,0,0)) 
             #check for collisions
             #trip = pygame.sprite.spritecollide(self.dog, self.walls, True)
             #if(trips):
@@ -211,8 +208,11 @@ class Controller:
                 #else:
                     #self.gameLost()
       
-            #pygame.time.set_timer(pygame.USEREVENT,1000)      
-            #self.all_sprites.draw(self.screen)
+      
+            self.all_sprites.draw(self.screen)
+            self.screen.blit(textsurface,(0,0))
+            self.walls.update()
+            self.frisbees.update()
             pygame.display.flip()
 
 def main():
