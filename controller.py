@@ -18,7 +18,7 @@ class Controller:
         self.button = pygame.Surface(self.screen.get_size()).convert()
 
         """Load sprites"""
-        self.dog = dog.Dog("Fido", 300, 400, "assets/GSDogRun1.png") 
+        self.dog = dog.Dog("Fido", 300, 400, "assets/GSDogRun1.png")
         #set up the walls
         self.walls = pygame.sprite.Group()
         for i in range(1):
@@ -34,8 +34,8 @@ class Controller:
         self.instructions2 = background.Background("assets/Inst2.png", [0, 0])
         self.gamescreen = background.Background("assets/GameBG.png", [0, 0])
         self.winner = background.Background("assets/WinBG.png", [0, 0])
-        self.loser = background.Background("assets/LoseBG.png", [0, 0])  
-        
+        self.loser = background.Background("assets/LoseBG.png", [0, 0])
+
         #buttons
         #buttons for the main menu
         self.InstructionsMM = button.Button("assets/InstructionsMM.png", 400, 500, "rules",True)
@@ -159,10 +159,12 @@ class Controller:
             button_group.draw(self.screen)
             pygame.display.flip()
 
-    def gameWon(self):
+    def gameWon(self, score):
         """
         set up the "You Won" Page
         """
+        myfont = pygame.font.SysFont('Comic Sans MS', 30) #Not Fully Working
+        txt = myfont.render("Score: " + str(self.score), (0,0,0))
         button_group = pygame.sprite.Group([self.EndAgain,self.EndMenu])
         winner = True
         while winner:
@@ -179,12 +181,15 @@ class Controller:
             self.screen.fill([255, 255, 255])   #Fill screen with white
             self.screen.blit(self.winner.image, (0,0)) #put BG over white, under other objects.
             button_group.draw(self.screen)
+            self.screen.blit(txt, (400,400))
             pygame.display.flip()
 
-    def gameLost(self):
+    def gameLost(self, score):
         """
         Set up the "You Lost" Page
         """
+        myfont = pygame.font.SysFont('Comic Sans MS', 30) #Not Fully Working
+        txt = myfont.render("Score: " + str(self.score), (0,0,0))
         button_group = pygame.sprite.Group([self.EndAgain, self.EndMenu])
         loser = True
         while loser:
@@ -201,6 +206,7 @@ class Controller:
             self.screen.fill([255, 255, 255])   #Fill screen with white
             self.screen.blit(self.loser.image, (0,0)) #put BG over white, under other objects.
             button_group.draw(self.screen)
+            self.screen.blit(txt, (400,400))
             pygame.display.flip()
 
     def mainLoop(self):
@@ -222,7 +228,7 @@ class Controller:
             textsurfaceTime = myfont.render(str(t.time_remaining()), False, (0,0,0))
             textsurfaceHealth = myfont.render("Health: " + str(health), False, (0,0,0))
             textsurfaceScore = myfont.render("Score: " + str(score), False, (0,0,0))
-            
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
@@ -239,13 +245,13 @@ class Controller:
                     self.all_sprites.add(self.addFrisbee())
                 if event.type == pygame.USEREVENT+1:
                     self.all_sprites.add(self.addWalls())
-                            
+
 
             #check for collisions
             #Collide with wall
             trips = pygame.sprite.spritecollide(self.dog, self.walls, True)
             if(trips):
-                if(health>1):  
+                if(health>1):
                     health -= 1
                 elif(health==1):
                     health = 0
@@ -261,7 +267,7 @@ class Controller:
                     score += 10
                 elif(item.name == "Yellow"):
                     score += 0
-            
+
             self.all_sprites.draw(self.screen)
             self.screen.blit(textsurfaceTime,(0,0))
             self.screen.blit(textsurfaceHealth,(640,0))
