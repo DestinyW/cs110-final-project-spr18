@@ -13,16 +13,9 @@ class Wall(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
         # set other attributes
-        self.name = name + str(id(self))
-        self.speed = random.randrange(8,14)    
+        self.name = name + str(id(self))   
         self.screen_width, self.screen_height = pygame.display.get_surface().get_size()
-    
-    def reset_pos(self):
-        self.rect.x = random.randrange(-1,-2)
-        self.rect.y = random.randrange(self.screen_height - self.rect.width)
 
     def update(self):
-        self.rect.x -= 1
-        # resets any hurdles that slides off the screen
-        if self.rect.x > self.screen_width + 10:
-            self.reset_pos()
+        self.rect.x -= 2
+
