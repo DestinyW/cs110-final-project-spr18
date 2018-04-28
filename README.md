@@ -40,7 +40,7 @@ This is where the gameplay takes place. Frisbees are launched from the right of 
 ##### 2.4.1 Failure
 If the player runs out of health within the time limit then the gameplay ends and they are shown a screen that says “GAME OVER!”. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which starts the game again.
 
-![](assets/QuitMM.png?raw=true)
+![](assets/LoseBG.png?raw=true)
 
 ##### 2.4.2 Success
 If the player still has health at the end of the time limit they are shown a screen that says “Good job!”. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which starts the game again.
