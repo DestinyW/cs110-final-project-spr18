@@ -175,9 +175,9 @@ class Controller:
                 if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:       #setting up buttons. left click only
                     mouse = pygame.mouse.get_pos()
                     if self.EndAgain.rect.collidepoint(mouse):
-                        return 1
+                        return True
                     if self.EndMenu.rect.collidepoint(mouse):
-                        self.gameIntro()
+                        return False
             self.screen.fill([255, 255, 255])   #Fill screen with white
             self.screen.blit(self.winner.image, (0,0)) #put BG over white, under other objects.
             button_group.draw(self.screen)
@@ -200,9 +200,9 @@ class Controller:
                 if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:   #setting up buttons
                     mouse = pygame.mouse.get_pos()
                     if self.EndAgain.rect.collidepoint(mouse):
-                        return 1
+                        return True
                     if self.EndMenu.rect.collidepoint(mouse):
-                        self.gameIntro()
+                        return False
             self.screen.fill([255, 255, 255])   #Fill screen with white
             self.screen.blit(self.loser.image, (0,0)) #put BG over white, under other objects.
             button_group.draw(self.screen)
@@ -213,11 +213,11 @@ class Controller:
         """
         This is the main loop of the game
         """
+        status = True
         myfont = pygame.font.SysFont('Comic Sans MS', 30)
-        self.gameIntro()
-        t = timer.Timer(24)
-        health = 10
-        score = 0
+        t = timer.Timer(240)   #set up a 240 sec (4 min) timer
+        health = 10      #set health to 10
+        score = 0        #set score to 0
         self.all_sprites = pygame.sprite.Group([self.walls, self.frisbees, self.dog])
         pygame.key.set_repeat(1,50)
         pygame.time.set_timer(pygame.USEREVENT,5000)
@@ -255,7 +255,7 @@ class Controller:
                     health -= 1
                 elif(health==1):
                     health = 0
-                    self.gameLost()    #Lose the game if you run out of health
+                    return self.gameLost()    #Lose the game if you run out of health
             #collide with frisbee
             catch = pygame.sprite.spritecollide(self.dog, self.frisbees, True)
             for item in catch:
@@ -276,9 +276,12 @@ class Controller:
             self.walls.update()
             self.frisbees.update()
             pygame.display.flip()
-        self.gameWon()
+        return self.gameWon()
 
 def main():
     main_window = Controller()
-    main_window.mainLoop()
+    while True:
+        main_window.gameIntro()
+        while main_window.mainLoop():
+            pass
 main()
