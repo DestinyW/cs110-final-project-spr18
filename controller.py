@@ -209,7 +209,7 @@ class Controller:
         """
         myfont = pygame.font.SysFont('Comic Sans MS', 30)
         self.gameIntro()
-        t = timer.Timer(24)
+        t = timer.Timer(240)
         health = 10
         score = 0
         self.all_sprites = pygame.sprite.Group([self.walls, self.frisbees, self.dog])
