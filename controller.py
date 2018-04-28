@@ -57,12 +57,6 @@ class Controller:
         self.EndAgain = button.Button("assets/EndAgain.png", 50, 695, "again")
         self.EndMenu = button.Button("assets/EndMenu.png", 550, 670, "menu")
 
-        # members used to track time
-        self.font = pygame.font.SysFont('monospace', 15)
-        self.minute = 5
-        self.seconds = 0
-
-
     def gameIntro(self):
         """
         Set up game intro screen
@@ -90,10 +84,9 @@ class Controller:
             self.screen.fill([255, 255, 255])   #Fill screen with white
             self.screen.blit(self.mainmenu.image, (0,0)) #put BG over white, under other objects.
             button_group.draw(self.screen)
-
             pygame.display.flip()
 
-    def gameRules1(self):              #Set up instructions screen 1
+    def gameRules1(self):
         """
         Set up the first instructions page
         """
@@ -114,7 +107,6 @@ class Controller:
                             return False
                         if retval == 1:
                             return True
-
             self.screen.fill([255, 255, 255])   #Fill screen with white
             self.screen.blit(self.instructions1.image, (0,0)) #put BG over white, under other objects.
             button_group.draw(self.screen)
@@ -207,7 +199,6 @@ class Controller:
                     #self.healthDown()
                 #else:
                     #self.gameLost()
-      
       
             self.all_sprites.draw(self.screen)
             self.screen.blit(textsurface,(0,0))
