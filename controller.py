@@ -1,4 +1,5 @@
 import pygame
+import random
 import time
 import sys
 #from src import dog
@@ -18,8 +19,12 @@ class Controller:
         self.button = pygame.Surface(self.screen.get_size()).convert()
 
         """Load sprites"""
-        #self.dog = dog.Dog("Conan", 50, 50, "assets/GSDogRun1.png")    #will this interfere with the running animation?
+        #self.dog = dog.Dog("Fido", 50, 50, "assets/GSDogRun1.png") 
         #self.walls = pygame.sprite.Group()
+        #for i in range(5):
+        #x = random.randrange(10, 800)
+        #y = random.randrange(400, 650)
+        #self.walls.add(hurdle.Hurdle("wall", x, y, "assets/Wall.png"))
         #self.frisbees = pygame.sprite.Group()
 
         #load background images
@@ -36,16 +41,14 @@ class Controller:
         self.PlayMM = button.Button("assets/PlayMM.png",400,600,"play",True)
         self.quitMM = button.Button("assets/QuitMM.png",400,700,"quit",True)
         #buttons for the first instructions page
-        self.menu = button.Button("assets/InstMenu.png", 10, 650, "menu")
-        self.next = button.Button("assets/Inst1Next.png", 610, 650, "next")
+        self.menu = button.Button("assets/InstMenu.png", 10, 680, "menu")
+        self.next = button.Button("assets/Inst1Next.png", 610, 680, "next")
         #buttons for the second instruction page
-        self.Instback = button.Button("assets/Inst2Back.png", 300, 650, "back")
-        self.Instplay = button.Button("assets/Inst2Play.png", 610, 650, "play")
+        self.Instback = button.Button("assets/Inst2Back.png", 300, 680, "back")
+        self.Instplay = button.Button("assets/Inst2Play.png", 610, 680, "play")
         #buttons for the end screens
         self.EndAgain = button.Button("assets/EndAgain.png", 50, 695, "again")
         self.EndMenu = button.Button("assets/EndMenu.png", 550, 670, "menu")
-
-        #self.all_sprites = pygame.sprite.Group((self.dog)+(self.frisbees)+(self.walls))
 
         # members used to track time
         self.font = pygame.font.SysFont('monospace', 15)
@@ -85,7 +88,7 @@ class Controller:
 
     def gameRules1(self):              #Set up instructions screen 1
         """
-            Set up the first instructions page
+        Set up the first instructions page
         """
         button_group = pygame.sprite.Group([self.menu,self.next])
         rules1 = True
@@ -145,7 +148,7 @@ class Controller:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     quit()
-                if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:       #setting up buttons
+                if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:       #setting up buttons. left click only
                     mouse = pygame.mouse.get_pos()
                     if self.EndAgain.rect.collidepoint(mouse):
                         return 1
@@ -209,7 +212,7 @@ class Controller:
                     #self.gameLost()
       
             #pygame.time.set_timer(pygame.USEREVENT,1000)      
-            
+            #self.all_sprites.draw(self.screen)
             pygame.display.flip()
 
 def main():
