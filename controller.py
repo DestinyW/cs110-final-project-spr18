@@ -1,10 +1,9 @@
 import pygame
 import random
 import sys
-#from src import dog
+from src import dog
 from src import frisbee
 from src import wall
-#from src import score
 from src import background
 from src import button
 from src import timer
@@ -19,20 +18,15 @@ class Controller:
         self.button = pygame.Surface(self.screen.get_size()).convert()
 
         """Load sprites"""
-        #self.dog = dog.Dog("Fido", 300, 300, "assets/GSDogRun1.png") 
+        self.dog = dog.Dog("Fido", 300, 400, "assets/GSDogRun1.png") 
         #set up the walls
         self.walls = pygame.sprite.Group()
-        for i in range(3):
-            x = random.randrange(750, 800)
-            y = random.randrange(400, 650)
-            self.walls.add(wall.Wall("walls", x, y, "assets/Wall.png"))
+        for i in range(1):
+            self.addWalls()
         #Set up the frisbees
         self.frisbees = pygame.sprite.Group()
-        for i in range(4):
-            x = random.randrange(750, 800)
-            y = random.randrange(400, 650)
-            frisbee_number = random.randrange(0,3)
-            self.frisbees.add(frisbee.Frisbee("disks", x, y, frisbee_number))
+        for i in range(2):
+            self.addFrisbee()
 
         #load background images
         self.mainmenu = background.Background("assets/MainMenu.png", [0, 0])
@@ -56,6 +50,35 @@ class Controller:
         #buttons for the end screens
         self.EndAgain = button.Button("assets/EndAgain.png", 50, 695, "again")
         self.EndMenu = button.Button("assets/EndMenu.png", 550, 670, "menu")
+
+    def addFrisbee(self):
+        """
+        Function for generating new frisbees
+        """
+        x = random.randrange(750, 800)
+        y = random.randrange(280, 630)
+        frisbee_number = random.randint(0,3)   #calls on one of the 4 frisbee types
+        if(frisbee_number == 0):
+            name = "Purple"
+        elif(frisbee_number == 1):
+            name = "Red"
+        elif(frisbee_number == 2):
+            name = "Yellow"
+        elif(frisbee_number == 3):
+            name = "White"
+        new_frisbee = frisbee.Frisbee(name, x, y, frisbee_number)
+        self.frisbees.add(new_frisbee)
+        return new_frisbee
+
+    def addWalls(self):
+        """
+        function for generating new walls
+        """
+        x = random.randrange(750, 800)
+        y = random.randrange(350, 630)
+        new_wall = wall.Wall("walls", x, y, "assets/Wall.png")
+        self.walls.add(new_wall)
+        return new_wall
 
     def gameIntro(self):
         """
@@ -160,7 +183,7 @@ class Controller:
 
     def gameLost(self):
         """
-        set up the "You Lost" Page
+        Set up the "You Lost" Page
         """
         button_group = pygame.sprite.Group([self.EndAgain, self.EndMenu])
         loser = True
@@ -186,25 +209,68 @@ class Controller:
         """
         myfont = pygame.font.SysFont('Comic Sans MS', 30)
         self.gameIntro()
-        t = timer.Timer(240)
-        self.all_sprites = pygame.sprite.Group([self.walls, self.frisbees])
+        t = timer.Timer(24)
+        health = 10
+        score = 0
+        self.all_sprites = pygame.sprite.Group([self.walls, self.frisbees, self.dog])
+        pygame.key.set_repeat(1,50)
+        pygame.time.set_timer(pygame.USEREVENT,5000)
+        pygame.time.set_timer(pygame.USEREVENT+1,7000)
         while t.time_remaining() > 0:
             self.screen.fill([255, 255, 255])   #Fill screen with white
             self.screen.blit(self.gamescreen.image, (0,0)) #put BG over white, under other objects
-            textsurface = myfont.render(str(t.time_remaining()), False, (0,0,0)) 
+            textsurfaceTime = myfont.render(str(t.time_remaining()), False, (0,0,0))
+            textsurfaceHealth = myfont.render("Health: " + str(health), False, (0,0,0))
+            textsurfaceScore = myfont.render("Score: " + str(score), False, (0,0,0))
+            
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    sys.exit()
+                if event.type == pygame.KEYDOWN:
+                    if(event.key == pygame.K_UP):
+                        self.dog.moveUp()
+                    elif(event.key == pygame.K_DOWN):
+                        self.dog.moveDown()
+                    elif(event.key == pygame.K_LEFT):
+                        self.dog.moveLeft()
+                    elif(event.key == pygame.K_RIGHT):
+                        self.dog.moveRight()
+                if event.type == pygame.USEREVENT:
+                    self.all_sprites.add(self.addFrisbee())
+                if event.type == pygame.USEREVENT+1:
+                    self.all_sprites.add(self.addWalls())
+                            
+
             #check for collisions
-            #trip = pygame.sprite.spritecollide(self.dog, self.walls, True)
-            #if(trips):
-                #if(health>0):  #does this go here or in a Health Class. How do I display health on screen?
-                    #self.healthDown()
-                #else:
-                    #self.gameLost()
-      
+            #Collide with wall
+            trips = pygame.sprite.spritecollide(self.dog, self.walls, True)
+            if(trips):
+                if(health>1):  
+                    health -= 1
+                elif(health==1):
+                    health = 0
+                    self.gameLost()    #Lose the game if you run out of health
+            #collide with frisbee
+            catch = pygame.sprite.spritecollide(self.dog, self.frisbees, True)
+            for item in catch:
+                if(item.name == "White"):
+                    score -= 10
+                elif(item.name == "Red"):
+                    score += 20
+                elif(item.name == "Purple"):
+                    score += 10
+                elif(item.name == "Yellow"):
+                    score += 0
+            
             self.all_sprites.draw(self.screen)
-            self.screen.blit(textsurface,(0,0))
+            self.screen.blit(textsurfaceTime,(0,0))
+            self.screen.blit(textsurfaceHealth,(640,0))
+            self.screen.blit(textsurfaceScore,(640,35))
+            self.dog.update()
             self.walls.update()
             self.frisbees.update()
             pygame.display.flip()
+        self.gameWon()
 
 def main():
     main_window = Controller()

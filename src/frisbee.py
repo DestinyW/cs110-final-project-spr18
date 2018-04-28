@@ -12,7 +12,7 @@ class Frisbee(pygame.sprite.Sprite):
         elif(frisbee_number == 1):
             image_file = "assets/Red.png"
         elif(frisbee_number == 2):
-            image_file = "assets/White.png"
+            image_file = "assets/Yellow.png"
         elif(frisbee_number == 3):
             image_file = "assets/White.png"
         self.image = pygame.image.load(image_file).convert_alpha()
@@ -21,7 +21,7 @@ class Frisbee(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
         # set other attributes
-        self.name = name + str(id(self))
+        self.name = name
         self.speed = random.randrange(4,8)
         self.screen_width, self.screen_height = pygame.display.get_surface().get_size()
 
