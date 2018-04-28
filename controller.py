@@ -66,7 +66,7 @@ class Controller:
             name = "Yellow"
         elif(frisbee_number == 3):
             name = "White"
-                new_frisbee = frisbee.Frisbee(name, x, y, frisbee_number)  #generates frisbee
+        new_frisbee = frisbee.Frisbee(name, x, y, frisbee_number)  #generates frisbee
         self.frisbees.add(new_frisbee)
         return new_frisbee
 
@@ -98,7 +98,7 @@ class Controller:
                         retval = self.gameRules1()
                         if retval:
                             return
-                if self.quitMM.rect.collidepoint(mouse):   #quit game
+                    if self.quitMM.rect.collidepoint(mouse):   #quit game
                         pygame.quit()
                         quit()
                     if self.PlayMM.rect.collidepoint(mouse):       #start game       
