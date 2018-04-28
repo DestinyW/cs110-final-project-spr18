@@ -89,4 +89,4 @@ The back end specialist is responsible for writing the major classes and data fo
 - Game Testing:
 
 #### 5.2 Acceptance Test Procedure
-[ATP](https://docs.google.com/document/d/1mRwjm5VlQiFG5ITpi4t685rkpe00hen6QSnsbdL7kWU/edit?usp=sharing)
+[ATP Link](https://docs.google.com/document/d/1mRwjm5VlQiFG5ITpi4t685rkpe00hen6QSnsbdL7kWU/edit?usp=sharing)
