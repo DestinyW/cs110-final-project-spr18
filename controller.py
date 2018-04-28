@@ -159,12 +159,13 @@ class Controller:
             button_group.draw(self.screen)
             pygame.display.flip()
 
-    def gameWon(self, score):
+    def gameWon(self):
         """
         set up the "You Won" Page
         """
-        myfont = pygame.font.SysFont('Comic Sans MS', 30) #Not Fully Working
-        txt = myfont.render("Score: " + str(self.score), (0,0,0))
+        #myfont = pygame.font.SysFont('Comic Sans MS', 30) #Trying to display score on gameover screen
+        #txt = myfont.render("Score: " + str(score), (0,0,0)) #Not Fully Working
+
         button_group = pygame.sprite.Group([self.EndAgain,self.EndMenu])
         winner = True
         while winner:
@@ -181,15 +182,16 @@ class Controller:
             self.screen.fill([255, 255, 255])   #Fill screen with white
             self.screen.blit(self.winner.image, (0,0)) #put BG over white, under other objects.
             button_group.draw(self.screen)
-            self.screen.blit(txt, (400,400))
+            #self.screen.blit(txt, (400,400)) #Not Fully Working
             pygame.display.flip()
 
-    def gameLost(self, score):
+    def gameLost(self):
         """
         Set up the "You Lost" Page
         """
-        myfont = pygame.font.SysFont('Comic Sans MS', 30) #Not Fully Working
-        txt = myfont.render("Score: " + str(self.score), (0,0,0))
+        #myfont = pygame.font.SysFont('Comic Sans MS', 30) #Trying to display score on gameover screen
+        #txt = myfont.render("Score: " + str(score), (0,0,0)) #Not Fully Working
+
         button_group = pygame.sprite.Group([self.EndAgain, self.EndMenu])
         loser = True
         while loser:
@@ -206,7 +208,7 @@ class Controller:
             self.screen.fill([255, 255, 255])   #Fill screen with white
             self.screen.blit(self.loser.image, (0,0)) #put BG over white, under other objects.
             button_group.draw(self.screen)
-            self.screen.blit(txt, (400,400))
+            #self.screen.blit(txt, (400,400)) #Not Fully Working
             pygame.display.flip()
 
     def mainLoop(self):

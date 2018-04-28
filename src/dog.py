@@ -14,7 +14,7 @@ class Dog(pygame.sprite.Sprite):
         self.rect.y = y
         # set other attributes
         self.name = name
-        self.speed = 5
+        self.speed = 8
 
     """methods to make the dog move easier"""
     def moveUp(self):

@@ -22,7 +22,7 @@ class Frisbee(pygame.sprite.Sprite):
         self.rect.y = y
         # set other attributes
         self.name = name
-        self.speed = random.randrange(4,8)
+        self.speed = random.randrange(8,14)
         self.screen_width, self.screen_height = pygame.display.get_surface().get_size()
 
     def reset_pos(self):
