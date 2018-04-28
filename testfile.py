@@ -1,6 +1,6 @@
 from classes import dog
 from classes import frisbee
-from classes import hurdle
+from classes import wall
 from classes import score
 from classes import timer
 from classes import background
@@ -28,16 +28,16 @@ class Frisbee(pygame.sprite.Sprite):
         frisbee_group.add(a_frisbee)
         frisbee_group.draw(image_file)
 
-class Hurdle(pygame.sprite.Sprite):
-    def __init__(self, name, x = 8, y = 5, image_file = GShurdle):
-        super(Hurdle), self).__init__()
+class Wall(pygame.sprite.Sprite):
+    def __init__(self, name, x = 8, y = 5, image_file = Wall):
+        super(Wall), self).__init__()
         self.image = pygame.Surface((x, y))
         self.rect = self.image.get_rect()
 
-        hurdle_group = pygame.sprite.Group()
-        a_hurdle = Hurdle()
-        hurdle_group.add(a_hurdle)
-        hurdle_group.draw(image_file)
+        wall_group = pygame.sprite.Group()
+        a_wall = Wall()
+        wall_group.add(a_wall)
+        wall_group.draw(image_file)
 
 class Score(pygame.sprite.Sprite):
     def __init__(self):

@@ -14,7 +14,7 @@
 ***
 
 ## 1. Project Description
-In "Go, Fetch!" the player controls a dog to catch frisbees. Frisbees are automatically launched on one plane across the screen and come in 4 different colors, each with a different point value (White = - 30, Yellow = 0, Purple = +10, Red = +20). The player controls their dog with the up and down arrow keys to catch frisbees and avoild walls. Each time the player hits a wall the dog loses 1 health (10 bars maximum), if the dog reaches 0 health the player loses. The game takes 4 minutes to play, if at the end of 4 minutes the dog still has health then the player wins.
+In "Go, Fetch!" the player controls a dog to catch frisbees. Frisbees are automatically launched on one plane across the screen and come in 4 different colors, each with a different point value (White = - 30, Yellow = 0, Purple = +10, Red = +20). The player controls their dog with the up and down arrow keys to catch frisbees and avoid walls. Each time the player hits a wall the dog loses 1 health (10 bars maximum), if the dog reaches 0 health the player loses. The game takes 4 minutes to play, if at the end of 4 minutes the dog still has health then the player wins.
 
 ***    
 
@@ -22,43 +22,53 @@ In "Go, Fetch!" the player controls a dog to catch frisbees. Frisbees are automa
 #### 2.1 Main Menu/Start Screen
 This screen is the first thing that the user sees. It gives the user the option to play the game by clicking "Play", to leave the game by clicking "Quit", or to view the instructions by clicking "Instructions".
 
+![](assets/MainMenu.png?raw=true)
 
 #### 2.2 Instructions Screen
-These 2 screens display a short description of the game and show the user how to play the game. From the first instructions page the player can hit "Menu" to return to the Main Menu or "Next" to go on to the next page. From the second instructions page the player can hit "Menu" to return to the Main Menu, "Back" to go to the first instrucions page, or "Play" to begin the game.
+These 2 screens display a short description of the game and show the user how to play the game. From the first instructions page the player can hit "Menu" to return to the Main Menu or "Next" to go on to the next page. From the second instructions page the player can hit "Menu" to return to the Main Menu, "Back" to go to the first instructions page, or "Play" to begin the game.
 
+![First Instructions Page](assets/Inst1.png?raw=true)
+
+![Second Instructions Page](assets/Inst2.png?raw=true)
 
 #### 2.3 The Game Screen
-This is where gameplay takes place. Frisbees are launched from the right of the screen and the player will use the arrow keys to move within the field. The player must moves to get frisbees and avoid walls. Each time the dog fails to avoid a wall, its health bar will decrease by 1. 
+This is where the gameplay takes place. Frisbees are launched from the right of the screen and the player will use the arrow keys to move within the field. The player must moves to collect frisbees and avoid walls. Each time the dog fails to avoid a wall, its health bar will decrease by 1.
 
+![](assets/GameBG.png?raw=true)
 
 #### 2.4 The Game Over Menu
 ##### 2.4.1 Failure
-If the player runs out of health within the time limit then gameplay ends and they are shown a screen that says “GAME OVER!”. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which starts the game again.
+If the player runs out of health within the time limit then the gameplay ends and they are shown a screen that says “GAME OVER!”. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which starts the game again.
+
+![](assets/QuitMM.png?raw=true)
 
 ##### 2.4.2 Success
 If the player still has health at the end of the time limit they are shown a screen that says “Good job!”. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which starts the game again.
 
+![](assets/WinBG.png?raw=true)
 
 ***
 ## 3. Program Design
 #### 3.1 Non-Standard Libraries and Modules Used
-- [Pygame]{https://www.pygame.org/}: A free set of Python modules that is designed for developing game applications. It includes various features including computer graphics and sound libraries. 
+- [Pygame](https://www.pygame.org/): A free set of Python modules that is designed for developing game applications. It includes various features including computer graphics and sound libraries.
 
 #### 3.2 Class and File Relationships
-TBD
+![](charts/ClassFlowChart.png?raw=true)
 
 #### 3.3 List of Classes
-- Dog: A class that defines the player as a "dog" - it is an "active" object in gameplay. The dog will be able to move up and down the screen using the UP and DOWN arrows to catch frisbees and avoid walls. 
+- Dog: A class that defines the player as a "dog" - it is an "active" object in gameplay. The dog will be able to move up and down the screen using the UP and DOWN arrows to catch frisbees and avoid walls.
 
 - Frisbee: A class that defines an "active" subject in gameplay - primary point system. Frisbees will be "launched" from the right of the screen. They come in 4 different colors, each with a different point value (White = - 30, Yellow = 0, Purple = +10, Red = +20).
 
-- Wall: A class that defines the obstacles in gameplay. The dog can avoid the walls by moving up and down. If the dog fails to avoid a wall, it will lose 1 health (10 bars maximum), and a result of 0 causes failure and ends the game. 
+- Wall: A class that defines the obstacles in gameplay. The dog can avoid the walls by moving up and down. If the dog fails to avoid a wall, it will lose 1 health (10 bars maximum), and a result of 0 causes failure and ends the game.
 
-- Background: A class that defines the screen of the game, which is different as the program progresses. 
+- Score: A class that tracks the number of points the player gains during the gameplay. It also records and display the highest scores on game over menu.
 
-- Button: 
+- Background: A class that defines the screen of the game, which is different as the program progresses.
 
-- Controller: (includes timer and health)
+- Button: A class that sets the position of each button onto the screen of the game.
+
+- Controller: A class that initializes all of the imported pygame modules, load the sprites, handle the events, and contain the main loop. (includes timer and health)
 
 ***
 ## 4. Tasks and Responsibilities
@@ -69,7 +79,7 @@ The software lead is responsible for the overall project management in terms of 
 The front end specialist is responsible for designing the look of GUI, coding the main loop, and handling events in the controller. She is also responsible for the User Interface Design.
 
 #### 4.3 Back End Specialist - [Destiny Walcott]
-The back end specialist is responsible for writing the major classes and data for the program. She also collaborates with tehe front end specialist to write the initial codes of the program. She also creates the class diagram that shows the classes and their relationships with each other. 
+The back end specialist is responsible for writing the major classes and data for the program. She also collaborates with the front end specialist to write the initial codes of the program. She also creates the class diagram that shows the classes and their relationships with each other.
 
 ***
 ## 5. Testing
@@ -78,4 +88,5 @@ The back end specialist is responsible for writing the major classes and data fo
 
 - Game Testing:
 
-#### 5.2 [Acceptance Test Procedure](https://docs.google.com/document/d/1mRwjm5VlQiFG5ITpi4t685rkpe00hen6QSnsbdL7kWU/edit?usp=sharing)
+#### 5.2 Acceptance Test Procedure
+[ATP](https://docs.google.com/document/d/1mRwjm5VlQiFG5ITpi4t685rkpe00hen6QSnsbdL7kWU/edit?usp=sharing)

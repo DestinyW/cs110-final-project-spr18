@@ -12,6 +12,7 @@ class Score(pygame.sprite.Sprite):
         self.txt = font.render('Score: ' + str(self.score), True, black)
         screen.blit(self.txt, (0,0))
 
+"""Number of points for each frisbee vary by color"""
     def add_score(self, frisbee):
         if(frisbee == white):
             self.score -= 30

@@ -27,7 +27,7 @@ class Dog(pygame.sprite.Sprite):
         # set other attributes
         self.name = name
         self.speed = 5
-        self.health = 3
+        self.health = 10
 
 """methods to make the dog move easier"""
     def moveUp(self):
@@ -36,16 +36,16 @@ class Dog(pygame.sprite.Sprite):
     def moveDown(self):
         self.rect.y += self.speed
 
-"""If the player collides with the hurdle, the players health decreases by 1
-    If the player dodges the hurdle, the players health stay the same
+"""If the player collides with the wall, the players health decreases by 1
+    If the player dodges the wall, the players health stay the same
 """
-    def tripOver(self, hurdle):
-        if(random.randrange(3)):
+    def tripOver(self, wall):
+        if(random.randrange(10)):
             self.health -= 1
-            print("falls over hurdle")
+            print("ran into wall")
             return False
         else:
-            print("successfully dodges hurdle")
+            print("successfully dodges wall")
         return True
 
 # import colors
@@ -61,7 +61,7 @@ class Dog(pygame.sprite.Sprite):
         else:
             self.health_bar_color = red
             # OR
-            pygame.quit()
+            self.dog.kill()
         return pygame.draw.rect(self.health_bar_color, (800,25,25))
         # upper right: (800, 0)
         # upper left: (0,0)
