@@ -12,7 +12,7 @@ from src import cloud
 class Controller:
     def __init__(self, width=800, height=800):
         pygame.init()
-        pygame.mixer.init()
+        pygame.mixer.init(48000, -16, 1, 1024)
         self.width = width
         self.height = height
         self.screen = pygame.display.set_mode((self.width, self.height))
