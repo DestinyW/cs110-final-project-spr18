@@ -96,7 +96,7 @@ When the gameplay begins, we test the 4 arrow keys to ensure its functionality. 
 
 The gameplay runs for 4 minutes (240 seconds) in total. The dog has to catch as many colored frisbees (approaching from the right) as possible. The dog starts off with a maximum of 10 health bars, but loses 1 health every time it hits a wall. The health status will change to the color red once it reaches 3 bars. Moreover, the score is updated and displayed according to the colored frisbees the dog catches. 
 
-When we reach a fail state, a screen with "YOU LOSE!" opens up. However, in a win state, a screen with "WINNER!" opens up and shows a list of the top 10 scores. Finally, we return to the Main Menu screen where the "Quit" button is to complete testing. 
+When we reach a fail state, a screen with "YOU LOSE!" opens up and shows a list of the top 10 scores. However, in a win state, a screen with "WINNER!" opens up and shows a list of the top 10 scores. Finally, we return to the Main Menu screen where the "Quit" button is to complete testing. 
 
 #### 5.2 Acceptance Test Procedure
 [ATP Link](https://docs.google.com/document/d/1mRwjm5VlQiFG5ITpi4t685rkpe00hen6QSnsbdL7kWU/edit?usp=sharing)
