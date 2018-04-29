@@ -4,7 +4,7 @@
 
 [GitHub URL](https://github.com/binghamtonuniversity-cs110/final-project-spr18-indigo.git)
 
-[Demo Presentation Slides (TBD)](#)
+[Demo Presentation Slides](https://docs.google.com/presentation/d/1dSbB4_zx-twQYZmc-nDS_sP8jjsDZP-aItV4xw6damw/edit?usp=sharing)
 
 [GUI Concept](https://docs.google.com/presentation/d/1G4KUCHR8m9GNecY2GC9WtDUEP6b0_4xmQeJQMB2PxTA/edit?usp=sharing)
 
@@ -86,11 +86,23 @@ The back end specialist is responsible for writing the major classes and data fo
 ***
 ## 5. Testing
 #### 5.1 Testing Strategy
-- Menu Testing: First, we run the Controller file which properly opens up the game along with the accompanying background music. Then, we click the "Instructions" button to open up the instructions page. We then test the functionality of the "Next" and "Back" buttons to ensure that they navigate between the two instructions pages. Next, we click the "Menu" button to return to the original Main Menu screen. From there, we start the gameplay by clicking "Play".
+##### 5.1.1 Menu Testing
+First, we run the Controller file which properly opens up the game along with the accompanying background music. Then, we click the "Instructions" button to open up the instructions page. We then test the functionality of the "Next" and "Back" buttons to ensure that they navigate between the two instructions pages. Next, we click the "Menu" button to return to the original Main Menu screen. From there, we start the gameplay by clicking "Play".
 
+<<<<<<< HEAD
 Later on, we check additional buttons including the "Again" and "Quit" buttons. The "Again" button on both the "WINNER!" and "YOU LOSE!" screens properly returns to the gameplay. Lastly, the "Quit" button in main menu properly closes the game entirely.
 
 - Game Testing: When the gameplay begins, we test the 4 arrow keys to ensure its functionality. Pressing and holding down the UP, DOWN, LEFT, and RIGHT arrows allow the dog to move around the green field to catch frisbees and avoid walls. The dog is also contained within the green field and does not fall off as it approaches the edge.
+=======
+Later on, we check additional buttons including the "Again" and "Quit" buttons. The "Again" button on both the "WINNER!" and "YOU LOSE!" screens properly returns to the gameplay. Lastly, the "Quit" button in Main Menu properly closes the game entirely. 
+
+##### 5.1.2 Game Testing 
+When the gameplay begins, we test the 4 arrow keys to ensure its functionality. Pressing and holding down the UP, DOWN, LEFT, and RIGHT arrows allow the dog to move around the green field to catch frisbees and avoid walls. The dog is also contained within the green field and does not fall off the edges.  
+
+The gameplay runs for 4 minutes (240 seconds) in total. The dog has to catch as many colored frisbees (approaching from the right) as possible. The dog starts off with a maximum of 10 health bars, but loses 1 health every time it hits a wall. The health status will change to the color red once it reaches 3 bars. Moreover, the score is updated and displayed according to the colored frisbees the dog catches. 
+
+When we reach a fail state, a screen with "YOU LOSE!" opens up. However, in a win state, a screen with "WINNER!" opens up and shows a list of the top 10 scores. Finally, we return to the Main Menu screen where the "Quit" button is to complete testing. 
+>>>>>>> b44533a77b6a5ba104b88aa54767d124862a91ad
 
 #### 5.2 Acceptance Test Procedure
 [ATP Link](https://docs.google.com/document/d/1mRwjm5VlQiFG5ITpi4t685rkpe00hen6QSnsbdL7kWU/edit?usp=sharing)
