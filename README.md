@@ -53,7 +53,7 @@ If the player still has health at the end of the time limit they are shown a scr
 - [Pygame](https://www.pygame.org/): A free set of Python modules that is designed for developing game applications. It includes various features including computer graphics and sound libraries.
 
 #### 3.2 Class and File Relationships
-![](charts/ClassDiagram.png?raw=true)
+![](charts/ClassFlowChart1.png?raw=true)
 
 #### 3.3 List of Classes
 - Dog: A class that defines the player as a "dog" - it is an "active" object in gameplay. The dog will be able to move around the screen using the UP, DOWN, LEFT, and RIGHT arrows to catch frisbees and avoid walls.
@@ -88,9 +88,9 @@ The back end specialist is responsible for writing the major classes and data fo
 #### 5.1 Testing Strategy
 - Menu Testing: First, we run the Controller file which properly opens up the game along with the accompanying background music. Then, we click the "Instructions" button to open up the instructions page. We then test the functionality of the "Next" and "Back" buttons to ensure that they navigate between the two instructions pages. Next, we click the "Menu" button to return to the original Main Menu screen. From there, we start the gameplay by clicking "Play".
 
-Later on, we check additional buttons including the "Again" and "Quit" buttons. The "Again" button on both the "WINNER!" and "YOU LOSE!" screens properly returns to the gameplay. Lastly, the "Quit" button in main menu properly closes the game entirely. 
+Later on, we check additional buttons including the "Again" and "Quit" buttons. The "Again" button on both the "WINNER!" and "YOU LOSE!" screens properly returns to the gameplay. Lastly, the "Quit" button in main menu properly closes the game entirely.
 
-- Game Testing: When the gameplay begins, we test the 4 arrow keys to ensure its functionality. Pressing and holding down the UP, DOWN, LEFT, and RIGHT arrows allow the dog to move around the green field to catch frisbees and avoid walls. The dog is also contained within the green field and does not fall off as it approaches the edge. 
+- Game Testing: When the gameplay begins, we test the 4 arrow keys to ensure its functionality. Pressing and holding down the UP, DOWN, LEFT, and RIGHT arrows allow the dog to move around the green field to catch frisbees and avoid walls. The dog is also contained within the green field and does not fall off as it approaches the edge.
 
 #### 5.2 Acceptance Test Procedure
 [ATP Link](https://docs.google.com/document/d/1mRwjm5VlQiFG5ITpi4t685rkpe00hen6QSnsbdL7kWU/edit?usp=sharing)
