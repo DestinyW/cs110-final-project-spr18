@@ -14,7 +14,7 @@
 ***
 
 ## 1. Project Description
-In "Go, Fetch!" the player controls a dog to catch frisbees. Frisbees are automatically launched on one plane across the screen and come in 4 different colors, each with a different point value (White = - 30, Yellow = 0, Purple = +10, Red = +20). The player controls their dog with the up and down arrow keys to catch frisbees and avoid walls. Each time the player hits a wall the dog loses 1 health (10 bars maximum), if the dog reaches 0 health the player loses. The game takes 4 minutes to play, if at the end of 4 minutes the dog still has health then the player wins.
+In "Go, Fetch!" the player controls a dog to catch frisbees. Frisbees are automatically launched on one plane across the screen and come in 4 different colors, each with a different point value (White = - 10, Yellow = +1, Purple = +10, Red = +20). The player controls their dog with the up, down, left, and right arrow keys to catch frisbees and avoid walls. Each time the player hits a wall the dog loses 1 health (10 health points), if the dog reaches 0 health the player loses. The game takes 4 minutes (240 seconds) to play. If at the end of 4 minutes the dog still has health then the player wins.
 
 ***    
 
@@ -32,13 +32,13 @@ These 2 screens display a short description of the game and show the user how to
 ![Second Instructions Page](assets/Inst2.png?raw=true)
 
 #### 2.3 The Game Screen
-This is where the gameplay takes place. Frisbees are launched from the right of the screen and the player will use the arrow keys to move within the field. The player must moves to collect frisbees and avoid walls. Each time the dog fails to avoid a wall, its health bar will decrease by 1.
+This is where the gameplay takes place. Frisbees are launched from the right of the screen and the player will use the arrow keys to move within the field. The player must move to collect frisbees and avoid walls. Each time the dog fails to avoid a wall, its health  decreases by 1.
 
 ![](charts/GamePlay.png?raw=true)
 
 #### 2.4 The Game Over Menu
 ##### 2.4.1 Failure
-If the player runs out of health within the time limit then the gameplay ends and they are shown a screen that says “GAME OVER!”. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which starts the game again.
+If the player runs out of health within the time limit then gameplay ends and they are shown a screen that says “GAME OVER!”. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which starts the game again.
 
 ![](assets/LoseBG.png?raw=true)
 
@@ -67,6 +67,8 @@ If the player still has health at the end of the time limit they are shown a scr
 - Background: A class that defines the screen of the game, which is different as the program progresses.
 
 - Button: A class that sets the position of each button onto the screen of the game.
+
+-Cloud: A class that defines cloud objects. Clouds are passive and do not interact with anything, they simply scroll across the screen.
 
 - Controller: A class that initializes all of the imported pygame modules, load the sprites, handle the events, and contain the main loop. (includes timer and health)
 
