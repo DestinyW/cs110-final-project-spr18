@@ -14,7 +14,7 @@
 ***
 
 ## 1. Project Description
-In "Go, Fetch!" the player controls a dog to catch frisbees. Frisbees are automatically launched on one plane across the screen and come in 4 different colors, each with a different point value (White = - 10, Yellow = +1, Purple = +10, Red = +20). The player controls their dog with the up, down, left, and right arrow keys to catch frisbees and avoid walls. Each time the player hits a wall the dog loses 1 health (10 health points), if the dog reaches 0 health the player loses. The game takes 4 minutes (240 seconds) to play. If at the end of 4 minutes the dog still has health then the player wins.
+In "Go, Fetch!" the player controls a dog to catch frisbees. Frisbees are automatically launched on one plane across the screen and come in 4 different colors, each with a different point value (White = - 10, Yellow = +1, Purple = +10, Red = +20). The player controls their dog with the up, down, left, and right arrow keys to catch frisbees and avoid walls. Each time the player hits a wall the dog loses 1 health (10 health points maximum), if the dog reaches 0 health the player loses. The game takes 4 minutes (240 seconds) to play. If at the end of 4 minutes, the dog still has health then the player wins.
 
 ***    
 
@@ -32,18 +32,18 @@ These 2 screens display a short description of the game and show the user how to
 ![Second Instructions Page](assets/Inst2.png?raw=true)
 
 #### 2.3 The Game Screen
-This is where the gameplay takes place. Frisbees are launched from the right of the screen and the player will use the arrow keys to move within the field. The player must move to collect frisbees and avoid walls. Each time the dog fails to avoid a wall, its health  decreases by 1.
+This is where the gameplay takes place. Frisbees are launched from the right of the screen and the player will use the arrow keys to move within the green field. The player must move to collect frisbees and avoid walls. Each time the dog fails to avoid a wall, its health decreases by 1.
 
 ![](charts/GamePlay.png?raw=true)
 
 #### 2.4 The Game Over Menu
 ##### 2.4.1 Failure
-If the player runs out of health within the time limit then gameplay ends and they are shown a screen that says “GAME OVER!”. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which starts the game again.
+If the player runs out of health within the time limit then gameplay ends and they are shown a screen that says “YOU LOSE!”. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which restarts the game.
 
 ![](assets/LoseBG.png?raw=true)
 
 ##### 2.4.2 Success
-If the player still has health at the end of the time limit they are shown a screen that says “Good job!”. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which starts the game again.
+If the player still has health at the end of the time limit they are shown a screen that says “WINNER!”. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which restarts the game.
 
 ![](assets/WinBG.png?raw=true)
 
@@ -56,13 +56,13 @@ If the player still has health at the end of the time limit they are shown a scr
 ![](charts/ClassDiagram.png?raw=true)
 
 #### 3.3 List of Classes
-- Dog: A class that defines the player as a "dog" - it is an "active" object in gameplay. The dog will be able to move up and down the screen using the UP and DOWN arrows to catch frisbees and avoid walls.
+- Dog: A class that defines the player as a "dog" - it is an "active" object in gameplay. The dog will be able to move around the screen using the UP, DOWN, LEFT, and RIGHT arrows to catch frisbees and avoid walls.
 
 - Frisbee: A class that defines an "active" subject in gameplay - primary point system. Frisbees will be "launched" from the right of the screen. They come in 4 different colors, each with a different point value (White = - 30, Yellow = 0, Purple = +10, Red = +20).
 
-- Wall: A class that defines the obstacles in gameplay. The dog can avoid the walls by moving up and down. If the dog fails to avoid a wall, it will lose 1 health (10 bars maximum), and a result of 0 causes failure and ends the game.
+- Wall: A class that defines the obstacles in gameplay. The dog can avoid the walls by moving up, down, left and right. If the dog fails to avoid a wall, it will lose 1 health (10 bars maximum), and a result of 0 causes failure and ends the game.
 
-- Score: A class that tracks the number of points the player gains during the gameplay. It also records and display the highest scores on game over menu.
+- Score: A class that tracks the number of points the player gains during the gameplay. It also records and displays the highest scores on gameover menu.
 
 - Background: A class that defines the screen of the game, which is different as the program progresses.
 
@@ -70,7 +70,7 @@ If the player still has health at the end of the time limit they are shown a scr
 
 - Cloud: A class that defines cloud objects. Clouds are passive and do not interact with anything, they simply scroll across the screen.
 
-- Controller: A class that initializes all of the imported pygame modules, load the sprites, handle the events, and contain the main loop. (includes timer and health)
+- Controller: A class that initializes all of the imported pygame modules, load the sprites, handle the events, and contain the main loop.
 
 ***
 ## 4. Tasks and Responsibilities
@@ -86,9 +86,11 @@ The back end specialist is responsible for writing the major classes and data fo
 ***
 ## 5. Testing
 #### 5.1 Testing Strategy
-- Menu Testing:
+- Menu Testing: First, we run the Controller file which properly opens up the game along with the accompanying background music. Then, we click the "Instructions" button to open up the instructions page. We then test the functionality of the "Next" and "Back" buttons to ensure that they navigate between the two instructions pages. Next, we click the "Menu" button to return to the original Main Menu screen. From there, we start the gameplay by clicking "Play".
 
-- Game Testing:
+Later on, we check additional buttons including the "Again" and "Quit" buttons. The "Again" button on both the "WINNER!" and "YOU LOSE!" screens properly returns to the gameplay. Lastly, the "Quit" button in main menu properly closes the game entirely. 
+
+- Game Testing: When the gameplay begins, we test the 4 arrow keys to ensure its functionality. Pressing and holding down the UP, DOWN, LEFT, and RIGHT arrows allow the dog to move around the green field to catch frisbees and avoid walls. The dog is also contained within the green field and does not fall off as it approaches the edge. 
 
 #### 5.2 Acceptance Test Procedure
 [ATP Link](https://docs.google.com/document/d/1mRwjm5VlQiFG5ITpi4t685rkpe00hen6QSnsbdL7kWU/edit?usp=sharing)
