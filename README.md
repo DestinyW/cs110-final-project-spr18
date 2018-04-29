@@ -68,7 +68,7 @@ If the player still has health at the end of the time limit they are shown a scr
 
 - Button: A class that sets the position of each button onto the screen of the game.
 
--Cloud: A class that defines cloud objects. Clouds are passive and do not interact with anything, they simply scroll across the screen.
+- Cloud: A class that defines cloud objects. Clouds are passive and do not interact with anything, they simply scroll across the screen.
 
 - Controller: A class that initializes all of the imported pygame modules, load the sprites, handle the events, and contain the main loop. (includes timer and health)
 
