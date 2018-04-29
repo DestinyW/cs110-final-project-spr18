@@ -4,7 +4,7 @@
 
 [GitHub URL](https://github.com/binghamtonuniversity-cs110/final-project-spr18-indigo.git)
 
-[Demo Presentation Slides (TBD)](#)
+[Demo Presentation Slides](https://docs.google.com/presentation/d/1dSbB4_zx-twQYZmc-nDS_sP8jjsDZP-aItV4xw6damw/edit?usp=sharing)
 
 [GUI Concept](https://docs.google.com/presentation/d/1G4KUCHR8m9GNecY2GC9WtDUEP6b0_4xmQeJQMB2PxTA/edit?usp=sharing)
 
