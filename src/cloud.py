@@ -14,7 +14,8 @@ class Cloud(pygame.sprite.Sprite):
         self.rect.y = y
         # set other attributes
         self.screen_width, self.screen_height = pygame.display.get_surface().get_size()
+        self.speed = random.randrange(1,4)
 
     def update(self):
-        self.rect.x -= 2
+        self.rect.x -= self.speed
 
