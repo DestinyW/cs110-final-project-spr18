@@ -7,10 +7,12 @@ from src import wall
 from src import background
 from src import button
 from src import timer
+from src import cloud
 
 class Controller:
     def __init__(self, width=800, height=800):
         pygame.init()
+        pygame.mixer.init()
         self.width = width
         self.height = height
         self.screen = pygame.display.set_mode((self.width, self.height))
@@ -27,6 +29,10 @@ class Controller:
         self.frisbees = pygame.sprite.Group()
         for i in range(2):
             self.addFrisbee()
+        #Set up clouds
+        self.clouds = pygame.sprite.Group()
+        for i in range(1):
+            self.addClouds()
 
         #load background images
         self.mainmenu = background.Background("assets/MainMenu.png", [0, 0])
@@ -51,12 +57,13 @@ class Controller:
         self.EndAgain = button.Button("assets/EndAgain.png", 50, 695, "again")
         self.EndMenu = button.Button("assets/EndMenu.png", 550, 670, "menu")
 
+    #functions for continuously adding new sprites
     def addFrisbee(self):
         """
         Function for generating new frisbees
         """
         x = random.randrange(750, 800)
-        y = random.randrange(280, 630)
+        y = random.randrange(310, 630)
         frisbee_number = random.randint(0,3)   #calls on one of the 4 frisbee types
         if(frisbee_number == 0):  #names frisbee according to image called
             name = "Purple"
@@ -69,16 +76,24 @@ class Controller:
         new_frisbee = frisbee.Frisbee(name, x, y, frisbee_number)  #generates frisbee
         self.frisbees.add(new_frisbee)
         return new_frisbee
-
     def addWalls(self):
         """
         function for generating new walls
         """
         x = random.randrange(750, 800)
         y = random.randrange(350, 630)
-        new_wall = wall.Wall("walls", x, y, "assets/Wall.png")   #generates wall
+        new_wall = wall.Wall(x, y, "assets/Wall.png")   #generates wall
         self.walls.add(new_wall)    #adds wall
         return new_wall
+    def addClouds(self):
+        """
+        Function for generating new clouds
+        """
+        x = random.randrange(750, 800)
+        y = random.randrange(0, 200)
+        new_cloud = cloud.Cloud(x, y, "assets/Clouds.png")   #generates cloud
+        self.clouds.add(new_cloud)    #adds cloud
+        return new_cloud
 
     def gameIntro(self):
         """
@@ -86,6 +101,8 @@ class Controller:
         """
         button_group = pygame.sprite.Group([self.InstructionsMM,self.PlayMM,self.quitMM]) #buttons
         intro = True
+        pygame.mixer.music.load("sound/IntroMusic.wav")
+        pygame.mixer.music.play(-1)
         while intro:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -168,6 +185,7 @@ class Controller:
         button_group = pygame.sprite.Group([self.EndAgain,self.EndMenu])
         myfont = pygame.font.SysFont('Comic Sans MS', 40)
         winner = True
+        pygame.mixer.music.stop()   #stop gameplay music
         while winner:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -193,6 +211,7 @@ class Controller:
         button_group = pygame.sprite.Group([self.EndAgain, self.EndMenu])
         myfont = pygame.font.SysFont('Comic Sans MS', 40)
         loser = True
+        pygame.mixer.music.stop() #stop gameplay music
         while loser:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -222,14 +241,20 @@ class Controller:
         score = 0        #set score to 0
         self.all_sprites = pygame.sprite.Group([self.walls, self.frisbees, self.dog])
         pygame.key.set_repeat(1,50)
-        pygame.time.set_timer(pygame.USEREVENT,5000)
-        pygame.time.set_timer(pygame.USEREVENT+1,10000)
+        pygame.time.set_timer(pygame.USEREVENT,5000)   #timer for frisbees
+        pygame.time.set_timer(pygame.USEREVENT+1,10000)#timer for walls
+        pygame.time.set_timer(pygame.USEREVENT+2,10000)#timer for clouds
+        pygame.mixer.music.load("sound/GPMusic.wav")   #play music during gameplay
+        pygame.mixer.music.play(-1)
         while t.time_remaining() > 0:
             self.screen.fill([255, 255, 255])   #Fill screen with white
             self.screen.blit(self.gamescreen.image, (0,0)) #put BG over white, under other objects
             textsurfaceTime = myfont.render(str(t.time_remaining()), True, (0,0,0))
-            textsurfaceHealth = myfont.render("Health: " + str(health), True, (0,0,0))
             textsurfaceScore = myfont.render("Score: " + str(score), True, (0,0,0))
+            if(health>=4):
+                textsurfaceHealth = myfont.render("Health: " + str(health), True, (0,0,0))   
+            else:
+                textsurfaceHealth = myfont.render("Health: " + str(health), True, (220,20,60))   #Health turns red if 3 or lower
             
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -243,11 +268,12 @@ class Controller:
                         self.dog.moveLeft()
                     elif(event.key == pygame.K_RIGHT):
                         self.dog.moveRight()
-                if event.type == pygame.USEREVENT:
+                if event.type == pygame.USEREVENT:            #generate frisbees
                     self.all_sprites.add(self.addFrisbee())
-                if event.type == pygame.USEREVENT+1:
+                if event.type == pygame.USEREVENT+1:            #generate walls
                     self.all_sprites.add(self.addWalls())
-
+                if event.type == pygame.USEREVENT+2:       #generate clouds
+                    self.all_sprites.add(self.addClouds())
             #check for collisions
             #Collide with wall
             trips = pygame.sprite.spritecollide(self.dog, self.walls, True)
@@ -267,7 +293,7 @@ class Controller:
                 elif(item.name == "Purple"):
                     score += 10
                 elif(item.name == "Yellow"):
-                    score += 0
+                    score += 1
             
             self.all_sprites.draw(self.screen)
             self.screen.blit(textsurfaceTime,(0,0))
@@ -276,6 +302,7 @@ class Controller:
             self.dog.update()
             self.walls.update()
             self.frisbees.update()
+            self.clouds.update()
             pygame.display.flip()
         return self.gameWon(score)
 
