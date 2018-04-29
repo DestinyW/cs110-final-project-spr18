@@ -21,8 +21,8 @@ class Dog(pygame.sprite.Sprite):
         """
         Dog moves up
         """
-        TBuffer = 305
-        if(self.rect.y > 300):         #prevents dog from going off field
+        TBuffer = 310
+        if(self.rect.y > 305):         #prevents dog from going off field
             self.rect.y -= self.speed
         else:
             self.rect.y = TBuffer
@@ -30,8 +30,8 @@ class Dog(pygame.sprite.Sprite):
         """
         Dog moves down
         """
-        BBuffer = 590
-        if(self.rect.y < 595):           #prevents dog from going off screen
+        BBuffer = 600
+        if(self.rect.y < 605):           #prevents dog from going off screen
             self.rect.y += self.speed
         else:
             self.rect.y = BBuffer
