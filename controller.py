@@ -18,6 +18,10 @@ class Controller:
         self.screen = pygame.display.set_mode((self.width, self.height))
         self.background = pygame.Surface(self.screen.get_size()).convert()
         self.button = pygame.Surface(self.screen.get_size()).convert()
+        #sound effects
+        self.button_sound = pygame.mixer.Sound("sound/Click.wav")
+        self.victory_sound = pygame.mixer.Sound("sound/TaDa.wav")
+        self.failure_sound = pygame.mixer.Sound("sound/WahWah.wav")
 
         """Load sprites"""
         self.dog = dog.Dog("Fido", 300, 400, "assets/GSDogRun1.png") 
@@ -81,7 +85,7 @@ class Controller:
         function for generating new walls
         """
         x = random.randrange(750, 800)
-        y = random.randrange(350, 630)
+        y = random.randrange(350, 615)
         new_wall = wall.Wall(x, y, "assets/Wall.png")   #generates wall
         self.walls.add(new_wall)    #adds wall
         return new_wall
@@ -90,7 +94,7 @@ class Controller:
         Function for generating new clouds
         """
         x = random.randrange(750, 800)
-        y = random.randrange(0, 200)
+        y = random.randrange(0, 190)
         new_cloud = cloud.Cloud(x, y, "assets/Clouds.png")   #generates cloud
         self.clouds.add(new_cloud)    #adds cloud
         return new_cloud
@@ -112,6 +116,7 @@ class Controller:
                 if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:    
                     mouse = pygame.mouse.get_pos()
                     if self.InstructionsMM.rect.collidepoint(mouse):     #button to  instructions page
+                        self.button_sound.play()      #play button sound
                         retval = self.gameRules1()
                         if retval:
                             return
@@ -119,6 +124,7 @@ class Controller:
                         pygame.quit()
                         quit()
                     if self.PlayMM.rect.collidepoint(mouse):       #start game       
+                        self.button_sound.play()   #play button sound
                         # return value for gameplay function
                         return
 
@@ -142,8 +148,10 @@ class Controller:
                 if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:    
                     mouse = pygame.mouse.get_pos()
                     if self.menu.rect.collidepoint(mouse):
+                        self.button_sound.play()    #play button sound
                         return
-                    if self.next.rect.collidepoint(mouse):   
+                    if self.next.rect.collidepoint(mouse): 
+                        self.button_sound.play()    #play button sound
                         retval = self.gameRules2()
                         if retval == 0:
                             return False
@@ -168,10 +176,13 @@ class Controller:
                 if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:    #button to  instructions page
                     mouse = pygame.mouse.get_pos()
                     if self.menu.rect.collidepoint(mouse):
+                        self.button_sound.play()     #play button sound
                         return 0
                     if self.Instplay.rect.collidepoint(mouse):
+                        self.button_sound.play()    #play button sound
                         return 1
                     if self.Instback.rect.collidepoint(mouse):
+                        self.button_sound.play()    #play button sound
                         return 2
             self.screen.fill([255, 255, 255])   #Fill screen with white
             self.screen.blit(self.instructions2.image, (0,0)) #put BG over white, under other objects.
@@ -186,6 +197,7 @@ class Controller:
         myfont = pygame.font.SysFont('Comic Sans MS', 40)
         winner = True
         pygame.mixer.music.stop()   #stop gameplay music
+        self.victory_sound.play()  #play victory noise
         while winner:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -194,8 +206,10 @@ class Controller:
                 if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:       #setting up buttons. left click only
                     mouse = pygame.mouse.get_pos()
                     if self.EndAgain.rect.collidepoint(mouse):
+                        self.button_sound.play()  #play button sound
                         return True
                     if self.EndMenu.rect.collidepoint(mouse):
+                        self.button_sound.play()   #play button sound
                         return False
             self.screen.fill([255, 255, 255])   #Fill screen with white
             self.screen.blit(self.winner.image, (0,0)) #put BG over white, under other objects.
@@ -212,6 +226,7 @@ class Controller:
         myfont = pygame.font.SysFont('Comic Sans MS', 40)
         loser = True
         pygame.mixer.music.stop() #stop gameplay music
+        self.failure_sound.play()  #play failure noise
         while loser:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -220,8 +235,10 @@ class Controller:
                 if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:   #setting up buttons
                     mouse = pygame.mouse.get_pos()
                     if self.EndAgain.rect.collidepoint(mouse):
+                        self.button_sound.play()
                         return True
                     if self.EndMenu.rect.collidepoint(mouse):
+                        self.button_sound.play()
                         return False
             self.screen.fill([255, 255, 255])   #Fill screen with white
             self.screen.blit(self.loser.image, (0,0)) #put BG over white, under other objects.
@@ -241,8 +258,8 @@ class Controller:
         score = 0        #set score to 0
         self.all_sprites = pygame.sprite.Group([self.walls, self.frisbees, self.dog])
         pygame.key.set_repeat(1,50)
-        pygame.time.set_timer(pygame.USEREVENT,5000)   #timer for frisbees
-        pygame.time.set_timer(pygame.USEREVENT+1,10000)#timer for walls
+        pygame.time.set_timer(pygame.USEREVENT,4500)   #timer for frisbees
+        pygame.time.set_timer(pygame.USEREVENT+1,9000)#timer for walls
         pygame.time.set_timer(pygame.USEREVENT+2,10000)#timer for clouds
         pygame.mixer.music.load("sound/GPMusic.wav")   #play music during gameplay
         pygame.mixer.music.play(-1)
