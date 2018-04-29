@@ -1,9 +1,8 @@
 import pygame
-import random
 
 # model
 class Wall(pygame.sprite.Sprite):
-    def __init__(self, name, x, y, image_file):
+    def __init__(self, x, y, image_file):
         # initialize all the sprite functionality
         pygame.sprite.Sprite.__init__(self)
         # create surface object image
@@ -13,7 +12,6 @@ class Wall(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
         # set other attributes
-        self.name = name + str(id(self))   
         self.screen_width, self.screen_height = pygame.display.get_surface().get_size()
 
     def update(self):
