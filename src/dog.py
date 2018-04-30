@@ -3,7 +3,7 @@ import pygame
 """model"""
 
 class Dog(pygame.sprite.Sprite):
-    def __init__(self, name, x, y, image_file):
+    def __init__(self, x, y, image_file):
         # initialize all the sprite functionality
         pygame.sprite.Sprite.__init__(self)
         # create surface object image
@@ -13,8 +13,7 @@ class Dog(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
         # set other attributes
-        self.name = name
-        self.speed = 10
+        self.speed = 9
 
     """methods to make the dog move easier"""
     def moveUp(self):

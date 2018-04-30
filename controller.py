@@ -12,10 +12,11 @@ from src import cloud
 class Controller:
     def __init__(self, width=800, height=800):
         pygame.init()
-        pygame.mixer.init(48000, -16, 1, 1024)
+        pygame.mixer.init()
         self.width = width
         self.height = height
         self.screen = pygame.display.set_mode((self.width, self.height))
+        pygame.display.set_caption("Go, Fetch!")
         self.background = pygame.Surface(self.screen.get_size()).convert()
         self.button = pygame.Surface(self.screen.get_size()).convert()
         #sound effects
@@ -24,19 +25,13 @@ class Controller:
         self.failure_sound = pygame.mixer.Sound("sound/WahWah.wav")
 
         """Load sprites"""
-        self.dog = dog.Dog("Fido", 300, 400, "assets/GSDogRun1.png") 
-        #set up the walls
+        self.dog = dog.Dog(300, 400, "assets/GSDogRun1.png") 
         self.walls = pygame.sprite.Group()
-        for i in range(1):
-            self.addWalls()
+        self.clouds = pygame.sprite.Group()
         #Set up the frisbees
         self.frisbees = pygame.sprite.Group()
         for i in range(2):
             self.addFrisbee()
-        #Set up clouds
-        self.clouds = pygame.sprite.Group()
-        for i in range(1):
-            self.addClouds()
 
         #load background images
         self.mainmenu = background.Background("assets/MainMenu.png", [0, 0])
@@ -48,18 +43,18 @@ class Controller:
         
         #buttons
         #buttons for the main menu
-        self.InstructionsMM = button.Button("assets/InstructionsMM.png", 400, 500, "rules",True)
-        self.PlayMM = button.Button("assets/PlayMM.png",400,600,"play",True)
-        self.quitMM = button.Button("assets/QuitMM.png",400,700,"quit",True)
+        self.InstructionsMM = button.Button("assets/InstructionsMM.png", 400, 500,True)
+        self.PlayMM = button.Button("assets/PlayMM.png",400,600,True)
+        self.quitMM = button.Button("assets/QuitMM.png",400,700,True)
         #buttons for the first instructions page
-        self.menu = button.Button("assets/InstMenu.png", 10, 680, "menu")
-        self.next = button.Button("assets/Inst1Next.png", 610, 680, "next")
+        self.menu = button.Button("assets/InstMenu.png", 10, 680)
+        self.next = button.Button("assets/Inst1Next.png", 610, 680)
         #buttons for the second instruction page
-        self.Instback = button.Button("assets/Inst2Back.png", 300, 680, "back")
-        self.Instplay = button.Button("assets/Inst2Play.png", 610, 680, "play")
+        self.Instback = button.Button("assets/Inst2Back.png", 300, 680)
+        self.Instplay = button.Button("assets/Inst2Play.png", 610, 680)
         #buttons for the end screens
-        self.EndAgain = button.Button("assets/EndAgain.png", 50, 695, "again")
-        self.EndMenu = button.Button("assets/EndMenu.png", 550, 670, "menu")
+        self.EndAgain = button.Button("assets/EndAgain.png", 50, 695)
+        self.EndMenu = button.Button("assets/EndMenu.png", 550, 670)
 
     #functions for continuously adding new sprites
     def addFrisbee(self):
@@ -82,10 +77,10 @@ class Controller:
         return new_frisbee
     def addWalls(self):
         """
-        function for generating new walls
+        Function for generating new walls
         """
         x = random.randrange(750, 800)
-        y = random.randrange(350, 615)
+        y = random.randrange(370, 615)
         new_wall = wall.Wall(x, y, "assets/Wall.png")   #generates wall
         self.walls.add(new_wall)    #adds wall
         return new_wall
@@ -99,6 +94,7 @@ class Controller:
         self.clouds.add(new_cloud)    #adds cloud
         return new_cloud
 
+    #functions for different screens
     def gameIntro(self):
         """
         Set up game intro screen
@@ -214,7 +210,7 @@ class Controller:
             self.screen.fill([255, 255, 255])   #Fill screen with white
             self.screen.blit(self.winner.image, (0,0)) #put BG over white, under other objects.
             textsurfaceScore = myfont.render("Score: " + str(score), True, (255,255,255))
-            self.screen.blit(textsurfaceScore,(310, 250))
+            self.screen.blit(textsurfaceScore,(300, 250))
             button_group.draw(self.screen)
             pygame.display.flip()
 
@@ -253,15 +249,15 @@ class Controller:
         """
         status = True
         myfont = pygame.font.SysFont('Comic Sans MS', 30)
-        t = timer.Timer(240)   #set up a 240 sec (4 min) timer
+        t = timer.Timer(120)   #set up a 120 sec (2 min) timer
         health = 10      #set health to 10
         score = 0        #set score to 0
-        self.all_sprites = pygame.sprite.Group([self.walls, self.frisbees, self.dog])
+        self.all_sprites = pygame.sprite.Group([self.walls, self.frisbees, self.dog, self.clouds])
         pygame.key.set_repeat(1,50)
-        pygame.time.set_timer(pygame.USEREVENT,4500)   #timer for frisbees
-        pygame.time.set_timer(pygame.USEREVENT+1,9000)#timer for walls
-        pygame.time.set_timer(pygame.USEREVENT+2,10000)#timer for clouds
-        pygame.mixer.music.load("sound/GPMusic.wav")   #play music during gameplay
+        pygame.time.set_timer(pygame.USEREVENT,4500)    #timer for frisbees
+        pygame.time.set_timer(pygame.USEREVENT+1,13000) #timer for new wall every 13 sec
+        pygame.time.set_timer(pygame.USEREVENT+2,10000) #timer for new cloud every 10 sec
+        pygame.mixer.music.load("sound/GPMusic.wav")    #play music during gameplay
         pygame.mixer.music.play(-1)
         while t.time_remaining() > 0:
             self.screen.fill([255, 255, 255])   #Fill screen with white
@@ -285,6 +281,7 @@ class Controller:
                         self.dog.moveLeft()
                     elif(event.key == pygame.K_RIGHT):
                         self.dog.moveRight()
+    
                 if event.type == pygame.USEREVENT:            #generate frisbees
                     self.all_sprites.add(self.addFrisbee())
                 if event.type == pygame.USEREVENT+1:            #generate walls
@@ -316,10 +313,7 @@ class Controller:
             self.screen.blit(textsurfaceTime,(0,0))
             self.screen.blit(textsurfaceHealth,(640,0))
             self.screen.blit(textsurfaceScore,(640,35))
-            self.dog.update()
-            self.walls.update()
-            self.frisbees.update()
-            self.clouds.update()
+            self.all_sprites.update()
             pygame.display.flip()
         return self.gameWon(score)
 
