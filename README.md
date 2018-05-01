@@ -4,7 +4,7 @@
 
 [GitHub URL](https://github.com/binghamtonuniversity-cs110/final-project-spr18-indigo.git)
 
-[Demo Presentation Slides (TBD)](#)
+[Demo Presentation Slides](https://docs.google.com/presentation/d/1dSbB4_zx-twQYZmc-nDS_sP8jjsDZP-aItV4xw6damw/edit?usp=sharing)
 
 [GUI Concept](https://docs.google.com/presentation/d/1G4KUCHR8m9GNecY2GC9WtDUEP6b0_4xmQeJQMB2PxTA/edit?usp=sharing)
 
@@ -22,30 +22,44 @@ In "Go, Fetch!" the player controls a dog to catch frisbees. Frisbees are automa
 #### 2.1 Main Menu/Start Screen
 This screen is the first thing that the user sees. It gives the user the option to play the game by clicking "Play", to leave the game by clicking "Quit", or to view the instructions by clicking "Instructions".
 
-![](charts/MainMenu.png?raw=true)
+Original GUI Concept
+
+![](charts/MMOld.png?raw=true)
+
 
 #### 2.2 Instructions Screen
 These 2 screens display a short description of the game and show the user how to play the game. From the first instructions page the player can hit "Menu" to return to the Main Menu or "Next" to go on to the next page. From the second instructions page the player can hit "Menu" to return to the Main Menu, "Back" to go to the first instructions page, or "Play" to begin the game.
 
-![First Instructions Page](assets/Inst1.png?raw=true)
+Original GUI Concept
 
-![Second Instructions Page](assets/Inst2.png?raw=true)
+![](charts/I1Old.png?raw=true)
+![](charts/I2Old.png?raw=true)
+
 
 #### 2.3 The Game Screen
-This is where the gameplay takes place. Frisbees are launched from the right of the screen and the player will use the arrow keys to move within the field. The player must move to collect frisbees and avoid walls. Each time the dog fails to avoid a wall, its health  decreases by 1.
+This is where the gameplay takes place. Frisbees are launched from the right of the screen and the player will use the arrow keys to move within the field. The player must move to collect frisbees and avoid walls. Each time the dog fails to avoid a wall, its health  decreases by 1. Health is displayed in the upper right hand corner, and score is displayed right below it. The timer is displayed in the top left corner.
 
-![](charts/GamePlay.png?raw=true)
+Original GUI Concept
+
+![](charts/GSOld.png?raw=true)
+
 
 #### 2.4 The Game Over Menu
 ##### 2.4.1 Failure
 If the player runs out of health within the time limit then gameplay ends and they are shown a screen that says “GAME OVER!”. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which starts the game again.
 
-![](assets/LoseBG.png?raw=true)
+![](charts/FailOld.png?raw=true)
 
 ##### 2.4.2 Success
 If the player still has health at the end of the time limit they are shown a screen that says “Good job!”. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which starts the game again.
 
-![](assets/WinBG.png?raw=true)
+![](charts/WinOld.png?raw=true)
+
+##### 2.4.3 Final GUI Concept
+![](charts/MMCurrent.png?raw=true)
+![](charts/I1Current.png?raw=true)
+![](charts/I2Current.png?raw=true)
+![](charts/GSCurrent.png?raw=true)
 
 ***
 ## 3. Program Design
@@ -68,7 +82,7 @@ If the player still has health at the end of the time limit they are shown a scr
 
 - Button: A class that sets the position of each button onto the screen of the game.
 
--Cloud: A class that defines cloud objects. Clouds are passive and do not interact with anything, they simply scroll across the screen.
+- Cloud: A class that defines cloud objects. Clouds are passive and do not interact with anything, they simply scroll across the screen.
 
 - Controller: A class that initializes all of the imported pygame modules, load the sprites, handle the events, and contain the main loop. (includes timer and health)
 
@@ -86,9 +100,19 @@ The back end specialist is responsible for writing the major classes and data fo
 ***
 ## 5. Testing
 #### 5.1 Testing Strategy
-- Menu Testing:
+##### 5.1.1 Menu Testing
 
-- Game Testing:
+First, we run the Controller file which properly opens up the game along with the accompanying background music. Then, we click the "Instructions" button to open up the instructions page. We then test the functionality of the "Next" and "Back" buttons to ensure that they navigate between the two instructions pages. Next, we click the "Menu" button to return to the original Main Menu screen. From there, we start the gameplay by clicking "Play".
+
+Later on, we check additional buttons including the "Again" and "Quit" buttons. The "Again" button on both the "WINNER!" and "YOU LOSE!" screens properly returns to the gameplay. Lastly, the "Quit" button in Main Menu properly closes the game entirely.
+
+##### 5.1.2 Game Testing
+
+When the gameplay begins, we test the 4 arrow keys to ensure its functionality. Pressing and holding down the UP, DOWN, LEFT, and RIGHT arrows allow the dog to move around the green field to catch frisbees and avoid walls. The dog is also contained within the green field and does not fall off the edges.
+
+The gameplay runs for 4 minutes (240 seconds) in total. The dog has to catch as many colored frisbees (approaching from the right) as possible. The dog starts off with a maximum of 10 health bars, but loses 1 health every time it hits a wall. The health status will change to the color red once it reaches 3 bars. Moreover, the score is updated and displayed according to the colored frisbees the dog catches.
+
+When we reach a fail state, a screen with "YOU LOSE!" opens up and shows a list of the top 10 scores. However, in a win state, a screen with "WINNER!" opens up and shows a list of the top 10 scores. Finally, we return to the Main Menu screen where the "Quit" button is to complete testing.
 
 #### 5.2 Acceptance Test Procedure
 [ATP Link](https://docs.google.com/document/d/1mRwjm5VlQiFG5ITpi4t685rkpe00hen6QSnsbdL7kWU/edit?usp=sharing)
