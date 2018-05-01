@@ -1,19 +1,28 @@
 import json
 
-class scoreList:
+class Scorelist:
     def __init__(self, file_name, score):
         self.score = score
-        self.flie_name = file_name
+        #self.flie_name = file_name
 
     def loadScores(self):
-        with open('topFive.json') as json_data: 
-            save_data = json.load(json_data)
-        return save_data["high_scores"]
+        """
+        Function that will load the scores
+        """
+        with open(file_name) as json_data: #open file
+            save_data = json.load(json_data) #load json data and store as "save_data"
+        return save_data
 
     def saveNewScore(self, score):
-        with open('topFive.json') as json_data:  
-            load_data = json.load(json_data)
-        load_data["high_scores"]
-        load_data.append({'score': score}) #add a score to the file
-        with open('save_file.json', 'w') as outfile: #save the file
+        """
+        Function that will add a score and save it
+        """
+        with open(file_name) as json_data:  #open
+            load_data = json.load(json_data)  #load json data and storeas "load_data"
+        load_data.append(score) #add score to the file 
+        load_data.sort(reverse=True) #sort list from largest to smallest
+        load_data = load_data[:5]    #only want the top 5
+        with open(file_name, 'w') as outfile: #save the file
             json.dump(load_data, outfile)
+            data = JSON.stringify(load_data)  #convert json data to string
+        return data

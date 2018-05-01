@@ -7,6 +7,7 @@ from src import button
 from src import cloud
 from src import dog
 from src import frisbee
+from src import scorelist
 from src import timer
 from src import wall
 
@@ -236,28 +237,15 @@ class Controller:
                     if self.EndMenu.rect.collidepoint(mouse):
                         self.button_sound.play()
                         return False
+            top_scores = scorelist.Scorelist("topFive.json", score) #trying to figure out top scores
+            textsurfaceTops = myfont.render(top_scores, True, (255,255,255))   #trying to figure out top scores
             self.screen.fill([255, 255, 255])   #Fill screen with white
             self.screen.blit(self.loser.image, (0,0)) #put BG over white, under other objects.
             textsurfaceScore = myfont.render("Score: " + str(score), True, (255,255,255))
             self.screen.blit(textsurfaceScore,(295, 270))
+            self.screen.blit(textsurfaceTops,(295, 370))  #trying to figure out top scores
             button_group.draw(self.screen)
             pygame.display.flip()
-
-#    def highScores(self, score):
-#        fptr = open("scores.txt", "r")
-#        score_list = []
-#        for line in fptr:
-#            score_list.append(int(line))
-#        fprt.close()
-#        if current_score > score_list[4]:
-#            score_list.append(current_score)
-#            score_list = score_list.sort()   #check syntax
-#            score_list.pop()
-#        fptr_out = open("scores.txt","w")
-#        for score in score_list:
-#            fprt_out.write(score)
-#        fprt_out.close()
-        
 
     def mainLoop(self):
         """
@@ -270,8 +258,8 @@ class Controller:
         score = 0   #set score to 0
         self.all_sprites = pygame.sprite.Group([self.walls, self.frisbees, self.dog, self.clouds])
         pygame.key.set_repeat(1,50)
-        pygame.time.set_timer(pygame.USEREVENT,4500)    #timer for frisbees
-        pygame.time.set_timer(pygame.USEREVENT+1,13000) #timer for new wall every 13 sec
+        pygame.time.set_timer(pygame.USEREVENT,4000)    #timer for frisbees every 4 sec
+        pygame.time.set_timer(pygame.USEREVENT+1,8000) #timer for new wall every 8 sec
         pygame.time.set_timer(pygame.USEREVENT+2,10000) #timer for new cloud every 10 sec
         pygame.mixer.music.load("sound/GPMusic.wav")    #play music during gameplay
         pygame.mixer.music.play(-1)
