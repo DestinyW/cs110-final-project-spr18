@@ -22,19 +22,37 @@ In "Go, Fetch!" the player controls a dog to catch frisbees. Frisbees are automa
 #### 2.1 Main Menu/Start Screen
 This screen is the first thing that the user sees. It gives the user the option to play the game by clicking "Play", to leave the game by clicking "Quit", or to view the instructions by clicking "Instructions".
 
-![](charts/MainMenu.png?raw=true)
+Original GUI Concept
+
+![](charts/MMOld.png?raw=true)
+
+Current GUI
+
+![](charts/MMCurrent.png?raw=true)
 
 #### 2.2 Instructions Screen
 These 2 screens display a short description of the game and show the user how to play the game. From the first instructions page the player can hit "Menu" to return to the Main Menu or "Next" to go on to the next page. From the second instructions page the player can hit "Menu" to return to the Main Menu, "Back" to go to the first instructions page, or "Play" to begin the game.
 
-![First Instructions Page](assets/Inst1.png?raw=true)
+Original GUI Concept
 
-![Second Instructions Page](assets/Inst2.png?raw=true)
+![](charts/I1Old.png?raw=true)
+![](charts/I2Old.png?raw=true)
+
+Current GUI
+
+![](charts/I1Current.png?raw=true)
+![](charts/I2Current.png?raw=true)
 
 #### 2.3 The Game Screen
-This is where the gameplay takes place. Frisbees are launched from the right of the screen and the player will use the arrow keys to move within the field. The player must move to collect frisbees and avoid walls. Each time the dog fails to avoid a wall, its health  decreases by 1.
+This is where the gameplay takes place. Frisbees are launched from the right of the screen and the player will use the arrow keys to move within the field. The player must move to collect frisbees and avoid walls. Each time the dog fails to avoid a wall, its health  decreases by 1. Health is displayed in the upper right hand corner, and score is displayed right below it. The timer is displayed in the top left corner.
 
-![](charts/GamePlay.png?raw=true)
+Original GUI Concept
+
+![](charts/GSOld.png?raw=true)
+
+Current GUI
+
+![](charts/GSCurrent.png?raw=true)
 
 #### 2.4 The Game Over Menu
 ##### 2.4.1 Failure
