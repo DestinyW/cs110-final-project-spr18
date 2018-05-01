@@ -9,6 +9,7 @@ from src import dog
 from src import frisbee
 from src import timer
 from src import wall
+from src import scrorelist
 
 class Controller:
     def __init__(self, width=800, height=800):
@@ -41,7 +42,7 @@ class Controller:
         self.gamescreen = background.Background("assets/GameBG.png", [0, 0])
         self.winner = background.Background("assets/WinBG.png", [0, 0])
         self.loser = background.Background("assets/LoseBG.png", [0, 0])
-        
+
         """buttons"""
         #buttons for the main menu
         self.InstructionsMM = button.Button("assets/InstructionsMM.png", 400, 500,True)
@@ -120,7 +121,7 @@ class Controller:
                     if self.quitMM.rect.collidepoint(mouse): #quit game
                         pygame.quit()
                         quit()
-                    if self.PlayMM.rect.collidepoint(mouse): #start game       
+                    if self.PlayMM.rect.collidepoint(mouse): #start game
                         self.button_sound.play() #play button sound
                         return  # return value for gameplay function
 
@@ -257,7 +258,7 @@ class Controller:
 #        for score in score_list:
 #            fprt_out.write(score)
 #        fprt_out.close()
-        
+
 
     def mainLoop(self):
         """
@@ -281,10 +282,10 @@ class Controller:
             textsurfaceTime = myfont.render(str(t.time_remaining()), True, (0,0,0))
             textsurfaceScore = myfont.render("Score: " + str(score), True, (0,0,0))
             if(health>=4):
-                textsurfaceHealth = myfont.render("Health: " + str(health), True, (0,0,0)) 
+                textsurfaceHealth = myfont.render("Health: " + str(health), True, (0,0,0))
             else:
                 textsurfaceHealth = myfont.render("Health: " + str(health), True, (220,20,60)) #Health turns red if 3 or lower
-            
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
@@ -297,7 +298,7 @@ class Controller:
                         self.dog.moveLeft()
                     elif(event.key == pygame.K_RIGHT):
                         self.dog.moveRight()
-    
+
                 if event.type == pygame.USEREVENT:   #generate frisbees
                     self.all_sprites.add(self.addFrisbee())
                 if event.type == pygame.USEREVENT+1: #generate walls
@@ -308,7 +309,7 @@ class Controller:
             #Collide with wall
             trips = pygame.sprite.spritecollide(self.dog, self.walls, True)
             if(trips):
-                if(health>1):  
+                if(health>1):
                     health -= 1
                 elif(health==1):
                     health = 0
@@ -324,7 +325,7 @@ class Controller:
                     score += 10
                 elif(item.name == "Yellow"):
                     score += 1
-            
+
             self.all_sprites.draw(self.screen)
             self.screen.blit(textsurfaceTime,(0,0))
             self.screen.blit(textsurfaceHealth,(640,0))
