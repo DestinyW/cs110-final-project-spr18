@@ -4,7 +4,7 @@
 
 [GitHub URL](https://github.com/binghamtonuniversity-cs110/final-project-spr18-indigo.git)
 
-[Demo Presentation Slides (TBD)](#)
+[Demo Presentation Slides](https://docs.google.com/presentation/d/1dSbB4_zx-twQYZmc-nDS_sP8jjsDZP-aItV4xw6damw/edit?usp=sharing)
 
 [GUI Concept](https://docs.google.com/presentation/d/1G4KUCHR8m9GNecY2GC9WtDUEP6b0_4xmQeJQMB2PxTA/edit?usp=sharing)
 
@@ -68,7 +68,7 @@ If the player still has health at the end of the time limit they are shown a scr
 
 - Button: A class that sets the position of each button onto the screen of the game.
 
--Cloud: A class that defines cloud objects. Clouds are passive and do not interact with anything, they simply scroll across the screen.
+- Cloud: A class that defines cloud objects. Clouds are passive and do not interact with anything, they simply scroll across the screen.
 
 - Controller: A class that initializes all of the imported pygame modules, load the sprites, handle the events, and contain the main loop. (includes timer and health)
 
