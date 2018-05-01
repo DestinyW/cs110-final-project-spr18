@@ -9,7 +9,7 @@
 [GUI Concept](https://docs.google.com/presentation/d/1G4KUCHR8m9GNecY2GC9WtDUEP6b0_4xmQeJQMB2PxTA/edit?usp=sharing)
 
 ### Team: Indigo
-#### Team Names: Natalie Anselmi, Maggie Chen, and Destiny Walcott
+#### Team Members: Natalie Anselmi, Maggie Chen, and Destiny Walcott
 
 ***
 
@@ -60,6 +60,8 @@ If the player still has health at the end of the time limit they are shown a scr
 ![](charts/I1Current.png?raw=true)
 ![](charts/I2Current.png?raw=true)
 ![](charts/GSCurrent.png?raw=true)
+![](charts/WinCurrent.png?raw=true)
+![](charts/FailCurrent.png?raw=true)
 
 ***
 ## 3. Program Design
