@@ -7,10 +7,9 @@ from src import button
 from src import cloud
 from src import dog
 from src import frisbee
-from src import scorelist
+from src import highScore
 from src import timer
 from src import wall
-from src import scrorelist
 
 class Controller:
     def __init__(self, width=800, height=800):
@@ -193,9 +192,18 @@ class Controller:
         """
         button_group = pygame.sprite.Group([self.EndAgain,self.EndMenu])
         myfont = pygame.font.SysFont('Comic Sans MS', 40)
+        myfont2 = pygame.font.SysFont('Comic Sans MS', 30)
         winner = True
         pygame.mixer.music.stop() #stop gameplay music
         self.victory_sound.play() #play victory noise
+        textsurfaceScore = myfont.render("Score: " + str(score), True, (255,255,255))
+        textsurfaceHighs = myfont.render("High Scores:", True, (255,255,255))
+        top_scores = highScore.HighScore("topFive.json", score) #######trying to figure out top scores
+        scores = top_scores.draw_highscore() #######
+        x = ["1. ", "2. ", "3. ", "4. ", "5. "]
+        rank = []
+        for i in x:
+            rank.append(myfont2.render(str(i),True,(255,255,255)))
         while winner:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -209,17 +217,14 @@ class Controller:
                     if self.EndMenu.rect.collidepoint(mouse):
                         self.button_sound.play() #play button sound
                         return False
-            top_scores = scorelist.Scorelist("topFive.json", score) #trying to figure out top scores
-            scores = top_scores.updateScores(score)
-            x = ""
-            for line in scores:   # need to print each line in dictonary (dict from updateScores)
-                x = str(line) + "/n"
-            textsurfaceTops = myfont.render(x, True, (255,255,255))
             self.screen.fill([255, 255, 255])
             self.screen.blit(self.winner.image, (0,0))
-            textsurfaceScore = myfont.render("Score: " + str(score), True, (255,255,255))
-            self.screen.blit(textsurfaceTops,(295, 370))  #trying to figure out top scores
             self.screen.blit(textsurfaceScore,(300, 250))
+            self.screen.blit(textsurfaceHighs,(280, 450))
+            for i in range(len(scores)): #blit top 5 scores
+                self.screen.blit(scores[i],(410, 520+40*i))
+            for i in range(5): #blit ranks 1-5
+                self.screen.blit(rank[i],(350, 520+40*i))
             button_group.draw(self.screen)
             pygame.display.flip()
 
@@ -232,6 +237,9 @@ class Controller:
         loser = True
         pygame.mixer.music.stop() #stop gameplay music
         self.failure_sound.play()  #play failure noise
+        textsurfaceScore = myfont.render("Score: " + str(score), True, (255,255,255))
+        top_scores = highScore.HighScore("topFive.json", score)
+        scores = top_scores.draw_highscore() #will store new high score even if lose
         while loser:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -247,49 +255,29 @@ class Controller:
                         return False
             self.screen.fill([255, 255, 255])   #Fill screen with white
             self.screen.blit(self.loser.image, (0,0)) #put BG over white, under other objects.
-            textsurfaceScore = myfont.render("Score: " + str(score), True, (255,255,255))
             self.screen.blit(textsurfaceScore,(295, 270))
             button_group.draw(self.screen)
             pygame.display.flip()
 
-<<<<<<< HEAD
-#    def highScores(self, score):
-#        fptr = open("scores.txt", "r")
-#        score_list = []
-#        for line in fptr:
-#            score_list.append(int(line))
-#        fprt.close()
-#        if current_score > score_list[4]:
-#            score_list.append(current_score)
-#            score_list = score_list.sort()   #check syntax
-#            score_list.pop()
-#        fptr_out = open("scores.txt","w")
-#        for score in score_list:
-#            fprt_out.write(score)
-#        fprt_out.close()
-
-
-=======
->>>>>>> bd5d5ddf3f1197f7f6872f265d7a422bd6ca5c72
     def mainLoop(self):
         """
         This is the main loop of the game
         """
         status = True
         myfont = pygame.font.SysFont('Comic Sans MS', 30)
-        t = timer.Timer(24) #set up a 120 sec (2 min) timer
+        t = timer.Timer(120) #set up a 120 sec (2 min) timer
         health = 10 #set health to 10
         score = 0   #set score to 0
         self.all_sprites = pygame.sprite.Group([self.walls, self.frisbees, self.dog, self.clouds])
         pygame.key.set_repeat(1,50)
-        pygame.time.set_timer(pygame.USEREVENT,4000)    #timer for frisbees every 4 sec
-        pygame.time.set_timer(pygame.USEREVENT+1,8000) #timer for new wall every 8 sec
-        pygame.time.set_timer(pygame.USEREVENT+2,10000) #timer for new cloud every 10 sec
+        pygame.time.set_timer(pygame.USEREVENT, 4000)    #timer for frisbees every 4 sec
+        pygame.time.set_timer(pygame.USEREVENT+1, 7000) #timer for new wall every 7 sec
+        pygame.time.set_timer(pygame.USEREVENT+2, 10000) #timer for new cloud every 10 sec
         pygame.mixer.music.load("sound/GPMusic.wav")    #play music during gameplay
         pygame.mixer.music.play(-1)
         while t.time_remaining() > 0:
             self.screen.fill([255, 255, 255]) #Fill screen with white
-            self.screen.blit(self.gamescreen.image, (0,0)) #put BG over white, under other objects
+            self.screen.blit(self.gamescreen.image, (0,0)) #put BG over white, under objects
             textsurfaceTime = myfont.render(str(t.time_remaining()), True, (0,0,0))
             textsurfaceScore = myfont.render("Score: " + str(score), True, (0,0,0))
             if(health>=4):
