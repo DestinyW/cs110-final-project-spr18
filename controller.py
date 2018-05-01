@@ -238,8 +238,6 @@ class Controller:
         pygame.mixer.music.stop() #stop gameplay music
         self.failure_sound.play()  #play failure noise
         textsurfaceScore = myfont.render("Score: " + str(score), True, (255,255,255))
-        top_scores = highScore.HighScore("topFive.json", score)
-        scores = top_scores.draw_highscore() #will store new high score even if lose
         while loser:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -265,7 +263,7 @@ class Controller:
         """
         status = True
         myfont = pygame.font.SysFont('Comic Sans MS', 30)
-        t = timer.Timer(120) #set up a 120 sec (2 min) timer
+        t = timer.Timer(12) #set up a 120 sec (2 min) timer
         health = 10 #set health to 10
         score = 0   #set score to 0
         self.all_sprites = pygame.sprite.Group([self.walls, self.frisbees, self.dog, self.clouds])
