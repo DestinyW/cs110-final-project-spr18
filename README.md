@@ -26,9 +26,6 @@ Original GUI Concept
 
 ![](charts/MMOld.png?raw=true)
 
-Current GUI
-
-![](charts/MMCurrent.png?raw=true)
 
 #### 2.2 Instructions Screen
 These 2 screens display a short description of the game and show the user how to play the game. From the first instructions page the player can hit "Menu" to return to the Main Menu or "Next" to go on to the next page. From the second instructions page the player can hit "Menu" to return to the Main Menu, "Back" to go to the first instructions page, or "Play" to begin the game.
@@ -38,10 +35,6 @@ Original GUI Concept
 ![](charts/I1Old.png?raw=true)
 ![](charts/I2Old.png?raw=true)
 
-Current GUI
-
-![](charts/I1Current.png?raw=true)
-![](charts/I2Current.png?raw=true)
 
 #### 2.3 The Game Screen
 This is where the gameplay takes place. Frisbees are launched from the right of the screen and the player will use the arrow keys to move within the field. The player must move to collect frisbees and avoid walls. Each time the dog fails to avoid a wall, its health  decreases by 1. Health is displayed in the upper right hand corner, and score is displayed right below it. The timer is displayed in the top left corner.
@@ -50,20 +43,23 @@ Original GUI Concept
 
 ![](charts/GSOld.png?raw=true)
 
-Current GUI
-
-![](charts/GSCurrent.png?raw=true)
 
 #### 2.4 The Game Over Menu
 ##### 2.4.1 Failure
 If the player runs out of health within the time limit then gameplay ends and they are shown a screen that says “GAME OVER!”. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which starts the game again.
 
-![](assets/LoseBG.png?raw=true)
+![](charts/FailOld.png?raw=true)
 
 ##### 2.4.2 Success
 If the player still has health at the end of the time limit they are shown a screen that says “Good job!”. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which starts the game again.
 
-![](assets/WinBG.png?raw=true)
+![](charts/WinOld.png?raw=true)
+
+##### 2.4.3 Final GUI Concept
+![](charts/MMCurrent.png?raw=true)
+![](charts/I1Current.png?raw=true)
+![](charts/I2Current.png?raw=true)
+![](charts/GSCurrent.png?raw=true)
 
 ***
 ## 3. Program Design
