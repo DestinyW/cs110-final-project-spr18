@@ -208,9 +208,16 @@ class Controller:
                     if self.EndMenu.rect.collidepoint(mouse):
                         self.button_sound.play() #play button sound
                         return False
-            self.screen.fill([255, 255, 255]) #Fill screen with white
-            self.screen.blit(self.winner.image, (0,0)) #put BG over white, under other objects.
+            top_scores = scorelist.Scorelist("topFive.json", score) #trying to figure out top scores
+            scores = top_scores.updateScores(score)
+            x = ""
+            for line in scores:   # need to print each line in dictonary (dict from updateScores)
+                x = str(line) + "/n"
+            textsurfaceTops = myfont.render(x, True, (255,255,255))
+            self.screen.fill([255, 255, 255])
+            self.screen.blit(self.winner.image, (0,0))
             textsurfaceScore = myfont.render("Score: " + str(score), True, (255,255,255))
+            self.screen.blit(textsurfaceTops,(295, 370))  #trying to figure out top scores
             self.screen.blit(textsurfaceScore,(300, 250))
             button_group.draw(self.screen)
             pygame.display.flip()
@@ -237,13 +244,10 @@ class Controller:
                     if self.EndMenu.rect.collidepoint(mouse):
                         self.button_sound.play()
                         return False
-            top_scores = scorelist.Scorelist("topFive.json", score) #trying to figure out top scores
-            textsurfaceTops = myfont.render(top_scores, True, (255,255,255))   #trying to figure out top scores
             self.screen.fill([255, 255, 255])   #Fill screen with white
             self.screen.blit(self.loser.image, (0,0)) #put BG over white, under other objects.
             textsurfaceScore = myfont.render("Score: " + str(score), True, (255,255,255))
             self.screen.blit(textsurfaceScore,(295, 270))
-            self.screen.blit(textsurfaceTops,(295, 370))  #trying to figure out top scores
             button_group.draw(self.screen)
             pygame.display.flip()
 
@@ -253,7 +257,7 @@ class Controller:
         """
         status = True
         myfont = pygame.font.SysFont('Comic Sans MS', 30)
-        t = timer.Timer(120) #set up a 120 sec (2 min) timer
+        t = timer.Timer(24) #set up a 120 sec (2 min) timer
         health = 10 #set health to 10
         score = 0   #set score to 0
         self.all_sprites = pygame.sprite.Group([self.walls, self.frisbees, self.dog, self.clouds])
