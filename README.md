@@ -48,14 +48,18 @@ Original GUI Concept
 ##### 2.4.1 Failure
 If the player runs out of health within the time limit then gameplay ends and they are shown a screen that says “GAME OVER!”. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which starts the game again.
 
+Original GUI Concept
+
 ![](charts/FailOld.png?raw=true)
 
 ##### 2.4.2 Success
 If the player still has health at the end of the time limit they are shown a screen that says “Good job!”. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which starts the game again.
 
+Original GUI Concept
+
 ![](charts/WinOld.png?raw=true)
 
-##### 2.4.3 Final GUI Concept
+#### 2.5 Final GUI Concept
 ![](charts/MMCurrent.png?raw=true)
 ![](charts/I1Current.png?raw=true)
 ![](charts/I2Current.png?raw=true)
@@ -69,7 +73,7 @@ If the player still has health at the end of the time limit they are shown a scr
 - [Pygame](https://www.pygame.org/): A free set of Python modules that is designed for developing game applications. It includes various features including computer graphics and sound libraries.
 
 #### 3.2 Class and File Relationships
-![](charts/ClassDiagram.png?raw=true)
+![](charts/ClassFlowChart2.png?raw=true)
 
 #### 3.3 List of Classes
 - Dog: A class that defines the player as a "dog" - it is an "active" object in gameplay. The dog will be able to move up and down the screen using the UP and DOWN arrows to catch frisbees and avoid walls.
@@ -78,7 +82,9 @@ If the player still has health at the end of the time limit they are shown a scr
 
 - Wall: A class that defines the obstacles in gameplay. The dog can avoid the walls by moving up and down. If the dog fails to avoid a wall, it will lose 1 health (10 bars maximum), and a result of 0 causes failure and ends the game.
 
-- Score: A class that tracks the number of points the player gains during the gameplay. It also records and display the highest scores on game over menu.
+- High Score: A class that defines the top 5 highest scores in the game. The top 5 scores are stored within a JSON file and is updated whenever the player obtains a score that is higher than the previous scores in the list. The high score list is displayed onto the game over menu whenever the player wins the game.
+
+- Timer: A class that defines how much time is remaining within the gameplay. The timer is displayed onto the top left corner of the screen.
 
 - Background: A class that defines the screen of the game, which is different as the program progresses.
 
