@@ -54,7 +54,7 @@ Original GUI Concept
 ![](charts/FailOld.png?raw=true)
 
 ##### 2.4.2 Success
-If the player still has health at the end of the time limit they are shown a screen that says “Good job!”. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which starts the game again.
+If the player still has health at the end of the time limit they are shown a screen that says “Good job!”. There are 2 buttons: "Menu" which returns the player to the Main Menu and "Again" which starts the game again. The top 5 scores are displayed, and can only be updated if the player wins. If the player got a high score but ran out of health it does not count toawrds the scoreboard.
 
 Original GUI Concept
 
