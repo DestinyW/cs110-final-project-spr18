@@ -10,7 +10,6 @@
 
 ### Team: Indigo
 #### Team Members: Natalie Anselmi, Maggie Chen, and Destiny Walcott
-#### Course Number: A0
 
 ***
 
